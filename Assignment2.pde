@@ -1,13 +1,17 @@
-PImage img;
-
 void setup()
 {
   size(1000, 600);  
   background(0);
   img = loadImage("Enemy 1_1.jpg");
+  mapping = new Map();
+  enemies = new Enemy();
 }
+
+Map mapping;
+Enemy enemies;
 
 void draw()
 {
-  image(img, 50, 50, 100, 100);
+  mapping.RenderMap();
+  enemies.EnemyRender();
 }
