@@ -1,8 +1,7 @@
 void setup()
 {
-  size(1000, 600);  
+  size(800,600);  
   background(0);
-  img = loadImage("Enemy 1_1.jpg");
   mapping = new Map();
   enemies = new Enemy();
 }
