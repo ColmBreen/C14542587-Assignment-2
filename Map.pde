@@ -16,6 +16,7 @@ class Map
   
   void RenderMap()
   {
+    background(0);
     stroke(0, 0, 255);
     line(pos1, 0, pos1, height);
     line(0, pos2*5, width, pos2*5);

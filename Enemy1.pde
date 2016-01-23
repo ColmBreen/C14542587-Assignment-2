@@ -1,5 +1,6 @@
 class Enemy1 extends Enemy
 {
+  int goal = 0;
   
   Enemy1()
   {
@@ -16,6 +17,11 @@ class Enemy1 extends Enemy
   
   void EnemyUpdate()
   {
+    starPos.y++;
+    if(starPos.y > pos2*5)
+    {
+      goal = 1;
+    }
   }
   
 }

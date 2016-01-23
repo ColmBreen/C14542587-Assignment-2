@@ -13,5 +13,9 @@ ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 void draw()
 {
   mapping.RenderMap();
-  enemy1.EnemyRender();
+  if(enemy1.goal == 0)
+  {
+    enemy1.EnemyRender();
+    enemy1.EnemyUpdate();
+  }
 }
