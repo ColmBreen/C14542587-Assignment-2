@@ -54,5 +54,18 @@ class Map
     line(pos1+(halfLineWidth*2), (pos2*5)-halfLineWidth, middlePath-halfLineWidth, (pos2*5)-halfLineWidth);
     line(middlePath+halfLineWidth, (pos2*5)-halfLineWidth*3, width-halfLineWidth*4, (pos2*5)-halfLineWidth*3);
     line(middlePath+halfLineWidth, (pos2*5)-halfLineWidth, width-halfLineWidth*2, (pos2*5)-halfLineWidth);
+    
+    stroke(255);
+    line(pos1+(halfLineWidth*7), halfLineWidth*3, pos1+(halfLineWidth*7), halfLineWidth*7.30);
+    line(pos1+(halfLineWidth*4), halfLineWidth*5.15, pos1+(halfLineWidth*10), halfLineWidth*5.15); 
+    
+    line(width-(halfLineWidth*7), halfLineWidth*3, width-halfLineWidth*7, halfLineWidth*7.30);
+    line(width-(halfLineWidth*4), halfLineWidth*5.15, width-(halfLineWidth*10), halfLineWidth*5.15); 
+    
+    line(pos1+(halfLineWidth*7), (pos2*5) - halfLineWidth*3, pos1+(halfLineWidth*7), (pos2*5) - halfLineWidth*7.30);
+    line(pos1+(halfLineWidth*4), (pos2*5) - halfLineWidth*5.15, pos1+(halfLineWidth*10), (pos2*5) - halfLineWidth*5.15); 
+    
+    line(width-(halfLineWidth*7), (pos2*5) - halfLineWidth*3, width-halfLineWidth*7, (pos2*5) - halfLineWidth*7.30);
+    line(width-(halfLineWidth*4), (pos2*5) - halfLineWidth*5.15, width-(halfLineWidth*10), (pos2*5) - halfLineWidth*5.15); 
   }
 }
