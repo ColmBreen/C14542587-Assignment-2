@@ -21,15 +21,15 @@ class Enemy1 extends Enemy
   {
     if(direction == 0)
     {
-      starPos.y++;
+      starPos.y+=2;
     }
     else if(direction == 1)
     {
-      starPos.x++;
+      starPos.x+=2;
     }
     else
     {
-      starPos.x--;
+      starPos.x-=2;
     }
     //Enemy got through  
     if(starPos.y > pos2*5)
@@ -40,7 +40,6 @@ class Enemy1 extends Enemy
     if(starPos.y > (halfLineWidth*2) && starPos.y < (halfLineWidth*3) && starPos.x > middlePath - halfLineWidth && starPos.x < middlePath+halfLineWidth && first == 0)
     {
       direction = (int)random(0, 3);
-      //direction = 1;
       first = 1;
     }
     // top left corner direction change
@@ -53,22 +52,49 @@ class Enemy1 extends Enemy
     {
       direction = 0;
     }
-    
-    if(starPos.x < width-(halfLineWidth*2) && starPos.x >= width-(halfLineWidth*3) && starPos.y > (halfLineWidth*8) && starPos.y <= (halfLineWidth*9) && second == 0)
+    // Middle right random direction 
+    if(starPos.x < width-(halfLineWidth*2) && starPos.x >= width-(halfLineWidth*3) && starPos.y >= (halfLineWidth*8) && starPos.y <= (halfLineWidth*9) && second == 0)
     {
-      direction = (int)random(-2, 1);
+      if(third == 1 || fourth == 1)
+      {
+        direction = 0;
+      }
+      else
+      {
+        direction = (int)random(-2, 1);
+      }
       second = 1;
     }
     
-    //if(starPos.x < width-(halfLineWidth*2) && starPos.x >= width-(halfLineWidth*3) && starPos.y > halfLineWidth && starPos.y < (halfLineWidth*3))
-    //{
-    //  direction = 0;
-    //}
+    if(starPos.x > pos1+(halfLineWidth*2) && starPos.x <= pos1+(halfLineWidth*3) && starPos.y >= (halfLineWidth*8) && starPos.y <= (halfLineWidth*9) && third == 0)
+    {
+      if(second == 1 || fourth == 1)
+      {
+        direction = 0;
+      }
+      else
+      {
+        direction = (int)random(0, 2);
+      }
+      third = 1;
+    }
     
-    //if(starPos.x < width-(halfLineWidth*2) && starPos.x >= width-(halfLineWidth*3) && starPos.y > halfLineWidth && starPos.y < (halfLineWidth*3))
-    //{
-    //  direction = 0;
-    //}
+    if(starPos.x <= middlePath && starPos.x >= middlePath && starPos.y >= (halfLineWidth*8)+10 && starPos.y <= (halfLineWidth*8)+10)
+    {
+       if(second == 1)
+       {
+         direction = (int)random(-2, 1);
+       }
+       if(third == 1)
+       {
+         direction = (int)random(0, 2);
+       }
+       else if(second == 0 && third == 0)
+       {
+         direction = (int)random(0,3);
+       }
+       fourth = 1;
+    }
   }
   
 }

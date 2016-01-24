@@ -15,7 +15,7 @@ void draw()
   mapping.RenderMap();
   if(enemy1.goal == 0)
   {
-    enemy1.EnemyRender();
-    enemy1.EnemyUpdate();
+   enemy1.EnemyRender();
+   enemy1.EnemyUpdate();
   }
 }
