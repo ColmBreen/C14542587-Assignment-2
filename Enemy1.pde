@@ -1,4 +1,4 @@
-class Enemy1 extends Enemy
+class Enemy1 extends GameObject
 {
   int goal = 0;
   int direction = 0;
@@ -10,14 +10,14 @@ class Enemy1 extends Enemy
     starPos = new PVector(((width/6)*5)/2+pos1, 0);
   }
   
-  void EnemyRender()
+  void Render()
   {
     rectMode(CENTER);
     noFill();
     rect(starPos.x, starPos.y, 10, 10);
   }
   
-  void EnemyUpdate()
+  void Update()
   {
     if(direction == 0)
     {
@@ -52,8 +52,18 @@ class Enemy1 extends Enemy
     {
       direction = 0;
     }
+    // Bottom right corner direction change
+    if(starPos.x < width-(halfLineWidth*2) && starPos.x >= width-(halfLineWidth*3) && starPos.y > (halfLineWidth*14)+20 && starPos.y < (halfLineWidth*15)+20)
+    {
+      direction = 2;
+    }
+    // Bottom left corner direction change
+    if(starPos.x > pos1+(halfLineWidth*2) && starPos.x <= pos1+(halfLineWidth*3) && starPos.y > (halfLineWidth*14)+20 && starPos.y < (halfLineWidth*15)+20)
+    {
+      direction = 1;
+    }
     // Middle right random direction 
-    if(starPos.x < width-(halfLineWidth*2) && starPos.x >= width-(halfLineWidth*3) && starPos.y >= (halfLineWidth*8) && starPos.y <= (halfLineWidth*9) && second == 0)
+    if(starPos.x < width-(halfLineWidth*2) && starPos.x >= width-(halfLineWidth*3) && starPos.y >= (halfLineWidth*8)+10 && starPos.y <= (halfLineWidth*9)+10 && second == 0)
     {
       if(third == 1 || fourth == 1)
       {
@@ -65,8 +75,8 @@ class Enemy1 extends Enemy
       }
       second = 1;
     }
-    
-    if(starPos.x > pos1+(halfLineWidth*2) && starPos.x <= pos1+(halfLineWidth*3) && starPos.y >= (halfLineWidth*8) && starPos.y <= (halfLineWidth*9) && third == 0)
+    // Middle left direction
+    if(starPos.x > pos1+(halfLineWidth*2) && starPos.x <= pos1+(halfLineWidth*3) && starPos.y >= (halfLineWidth*8)+10 && starPos.y <= (halfLineWidth*9)+10 && third == 0)
     {
       if(second == 1 || fourth == 1)
       {
@@ -78,14 +88,14 @@ class Enemy1 extends Enemy
       }
       third = 1;
     }
-    
+    // Middle middle direction
     if(starPos.x <= middlePath && starPos.x >= middlePath && starPos.y >= (halfLineWidth*8)+10 && starPos.y <= (halfLineWidth*8)+10)
     {
-       if(second == 1)
+       if(second == 1 && third == 0)
        {
          direction = (int)random(-2, 1);
        }
-       if(third == 1)
+       else if(third == 1 && second == 0)
        {
          direction = (int)random(0, 2);
        }
@@ -94,6 +104,11 @@ class Enemy1 extends Enemy
          direction = (int)random(0,3);
        }
        fourth = 1;
+    }
+    //Bottom middle direction
+    if(starPos.x > middlePath-1 && starPos.x <= middlePath+1 && starPos.y > (halfLineWidth*14)+20 && starPos.y < (halfLineWidth*15)+20)
+    {
+      direction = 0;
     }
   }
   

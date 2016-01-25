@@ -8,14 +8,14 @@ void setup()
 
 Enemy1 enemy1;
 Map mapping;
-ArrayList<Enemy> enemies = new ArrayList<Enemy>();
+ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
 
 void draw()
 {
   mapping.RenderMap();
   if(enemy1.goal == 0)
   {
-   enemy1.EnemyRender();
-   enemy1.EnemyUpdate();
+   enemy1.Render();
+   enemy1.Update();
   }
 }
