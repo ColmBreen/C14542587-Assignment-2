@@ -21,15 +21,15 @@ class Enemy1 extends GameObject
   {
     if(direction == 0)
     {
-      starPos.y+=2;
+      starPos.y+=1;
     }
     else if(direction == 1)
     {
-      starPos.x+=2;
+      starPos.x+=1;
     }
     else
     {
-      starPos.x-=2;
+      starPos.x-=1;
     }
     //Enemy got through  
     if(starPos.y > pos2*5)
