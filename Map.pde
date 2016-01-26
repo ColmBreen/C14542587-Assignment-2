@@ -5,6 +5,8 @@ class Map
   float middlePath;
   float hrzMidPath;
   int halfLineWidth = 30;
+  float halfBoxWidth;
+  float halfBoxHeight;
   
   Map()
   {
@@ -36,6 +38,8 @@ class Map
     rect(pos1+halfLineWidth*4, hrzMidPath+halfLineWidth, middlePath-halfLineWidth, (pos2*5)-halfLineWidth*3);
     rect(width-halfLineWidth*4, halfLineWidth*3, middlePath+halfLineWidth, hrzMidPath-halfLineWidth);
     rect(width-halfLineWidth*4, hrzMidPath+halfLineWidth, middlePath+halfLineWidth, (pos2*5)-halfLineWidth*3);
+    halfBoxWidth = pos1+halfLineWidth*4 - middlePath-halfLineWidth;
+    halfBoxHeight = halfLineWidth*3 - hrzMidPath-halfLineWidth;
     
   }
 }
