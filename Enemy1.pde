@@ -15,7 +15,7 @@ class Enemy1 extends GameObject
     stroke(255, 255, 0);
     rectMode(CENTER);
     noFill();
-    rect(starPos.x, starPos.y, 10, 10);
+    rect(starPos.x, starPos.y, 20, 20);
   }
   
   void Update()

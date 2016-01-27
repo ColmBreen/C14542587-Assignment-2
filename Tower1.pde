@@ -7,6 +7,7 @@ class Tower1 extends GameObject
   
   void Render()
   {
+    starPos = new PVector(pos1, pos2*5);
     noFill();
     stroke(0, 0, 255);
     rectMode(CORNER);
@@ -24,11 +25,10 @@ class Tower1 extends GameObject
   {
     if(towerCheck[0] == true)
     {
+      println("yo");
       rectMode(CENTER);
       stroke(255);
       fill(255);
-      //starPos.x = pmouseX;
-      //starPos.y = pmouseY;
       rect((starPos.x+(pos1/2)), starPos.y + (pos2/2), 50, 50);
       fill(255, 0, 0);
       rect((starPos.x+(pos1/2)), starPos.y + (pos2/2), 30, 30); 

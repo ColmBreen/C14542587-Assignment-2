@@ -3,6 +3,7 @@ abstract class GameObject extends Map
   int health;
   PVector starPos;
   boolean[] towerCheck = new boolean[5];
+  boolean[] towerPlaced = new boolean[5];
   
   GameObject()
   {

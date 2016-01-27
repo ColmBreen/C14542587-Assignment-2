@@ -17,11 +17,19 @@ ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
 void draw()
 {
   mapping.RenderMap();
+  tower1.Render();
   for(int i = gameObjects.size() - 1 ; i >= 0   ;i --)
   {
      GameObject go = gameObjects.get(i);
-     go.Render();
-     go.Update();
+     if(go instanceof Tower1)
+     {
+       go.Update();
+     }
+     else
+     {
+       go.Render();
+       go.Update();
+     }
   }
   if(frameCount % 120 == 0 && count < 10)
   {
@@ -29,10 +37,9 @@ void draw()
     gameObjects.add(enemy1);
     count++;
   }
-  tower1.Render();
 }
 
-void mousePressed()
+void mouseClicked()
 {
   int i;
   for(i = 1; i < 6; i++)
@@ -40,15 +47,6 @@ void mousePressed()
     if(mouseX > mapping.pos1*i && mouseX < mapping.pos1*(i+1) && mouseY < height && mouseY > mapping.pos2*5)
     {
       tower1.towerCheck[i-1] = true;
-      println("This bit works");
-      if(i == 1)
-      {
-        GameObject tower1 = new Tower1();
-        gameObjects.add(tower1);
-        tower1.starPos.x = pmouseX;
-        tower1.starPos.y = pmouseY;
-        println("This works");
-      }
     }
   }
 }
