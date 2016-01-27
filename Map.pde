@@ -34,6 +34,7 @@ class Map
     line(pos1+(halfLineWidth*2), (pos2*5)-halfLineWidth, middlePath-halfLineWidth, (pos2*5)-halfLineWidth);
     line(middlePath+halfLineWidth, (pos2*5)-halfLineWidth, width-halfLineWidth*2, (pos2*5)-halfLineWidth);
     rectMode(CORNERS);
+    noFill();
     rect(pos1+halfLineWidth*4, halfLineWidth*3, middlePath-halfLineWidth, hrzMidPath-halfLineWidth);
     rect(pos1+halfLineWidth*4, hrzMidPath+halfLineWidth, middlePath-halfLineWidth, (pos2*5)-halfLineWidth*3);
     rect(width-halfLineWidth*4, halfLineWidth*3, middlePath+halfLineWidth, hrzMidPath-halfLineWidth);

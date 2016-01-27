@@ -31,3 +31,24 @@ void draw()
   }
   tower1.Render();
 }
+
+void mousePressed()
+{
+  int i;
+  for(i = 1; i < 6; i++)
+  {
+    if(mouseX > mapping.pos1*i && mouseX < mapping.pos1*(i+1) && mouseY < height && mouseY > mapping.pos2*5)
+    {
+      tower1.towerCheck[i-1] = true;
+      println("This bit works");
+      if(i == 1)
+      {
+        GameObject tower1 = new Tower1();
+        gameObjects.add(tower1);
+        tower1.starPos.x = pmouseX;
+        tower1.starPos.y = pmouseY;
+        println("This works");
+      }
+    }
+  }
+}
