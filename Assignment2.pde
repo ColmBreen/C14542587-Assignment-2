@@ -46,6 +46,8 @@ void mouseClicked()
   {
     if(mouseX > mapping.pos1*i && mouseX < mapping.pos1*(i+1) && mouseY < height && mouseY > mapping.pos2*5)
     {
+      GameObject tower1 = new Tower1();
+      gameObjects.add(tower1);
       tower1.towerCheck[i-1] = true;
     }
   }

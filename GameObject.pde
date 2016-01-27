@@ -11,6 +11,10 @@ abstract class GameObject extends Map
     {
       towerCheck[i] = false;
     }
+    for(int i = 0; i < 5; i++)
+    {
+      towerPlaced[i] = false;
+    }
   }
   
   abstract void Render();
