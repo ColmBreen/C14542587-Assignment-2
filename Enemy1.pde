@@ -34,7 +34,7 @@ class Enemy1 extends GameObject
     //Enemy got through  
     if(starPos.y > pos2*5)
     {
-      goal++;
+      gameObjects.remove(this);
     }
     // Top middle lane random direction
     if(starPos.y > (halfLineWidth*2) && starPos.y < (halfLineWidth*3) && starPos.x > middlePath - halfLineWidth && starPos.x < middlePath+halfLineWidth && first == 0)
