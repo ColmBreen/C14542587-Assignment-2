@@ -23,15 +23,15 @@ class Enemy1 extends GameObject
     stroke(255, 255, 0);
     if(direction == 0)
     {
-      starPos.y+=1;
+      starPos.y+=.5;
     }
     else if(direction == 1)
     {
-      starPos.x+=1;
+      starPos.x+=.5;
     }
     else
     {
-      starPos.x-=1;
+      starPos.x-=.5;
     }
     //Enemy got through  
     if(starPos.y > pos2*5)
