@@ -15,23 +15,24 @@ class Tower1 extends GameObject
     rectMode(CENTER);
     stroke(255);
     fill(255);
-    rect((starPos.x+(pos1/2)), starPos.y + (pos2/2), 50, 50);
+    rect((starPos.x+(pos1/2)), starPos.y + (pos2/2), 60, 50);
     fill(255, 0, 0);
-    rect((starPos.x+(pos1/2)), starPos.y + (pos2/2), 30, 30);     
+    rect((starPos.x+(pos1/2)), starPos.y + (pos2/2), 40, 30);     
   }
   
   
   void Update()
   {
+    float halfFirstBoxW = (((middlePath-halfLineWidth) - (pos1+(halfLineWidth*4)))/2)+(pos1+(halfLineWidth*4)); 
+    float halfFirstBoxV = (((hrzMidPath - halfLineWidth) - halfLineWidth*3)/2) + halfLineWidth*3;
     if(towerCheck[0] == true)
     {
-      println("yo");
       rectMode(CENTER);
       stroke(255);
       fill(255);
-      rect((starPos.x+(pos1/2)), starPos.y + (pos2/2), 50, 50);
+      rect(((halfFirstBoxW - (pos1 + halfLineWidth*4))/2) + (pos1 + halfLineWidth*4), ((halfFirstBoxV - halfLineWidth * 3)/2) + halfLineWidth*3, 60, 50);
       fill(255, 0, 0);
-      rect((starPos.x+(pos1/2)), starPos.y + (pos2/2), 30, 30); 
+      rect(((halfFirstBoxW - (pos1 + halfLineWidth*4))/2) + (pos1 + halfLineWidth*4), ((halfFirstBoxV - halfLineWidth * 3)/2) + halfLineWidth*3, 40, 30); 
     }
   }
 }
