@@ -1,3 +1,9 @@
+/*
+  1. Create Variables for half way points in other three boxes.
+  2. Mouse Clicked = Check which tower was selected and call function in Map class to highlight available spaces.
+  3. Mouse Clicked again = Call function in relevant tower's class to check where mouse was clicked and place tower there.
+  4. Make tower's shoot stuff.
+*/
 void setup()
 {
   size(800,600);  
@@ -7,10 +13,12 @@ void setup()
   gameObjects.add(enemy1);
   tower1 = new Tower1();
   towerSelect = false;
+  selectedTower = 0;
 }
 
 boolean towerSelect;
 int count = 1;
+int selectedTower;
 Tower1 tower1;
 Enemy1 enemy1;
 Map mapping;
@@ -51,25 +59,45 @@ void draw()
 void mouseClicked()
 {
   int i;
-  float halfFirstBoxW = (((mapping.middlePath-mapping.halfLineWidth) - mapping.pos1*4)/2)+mapping.pos1*4; 
-  float halfFirstBoxV = (((mapping.hrzMidPath - mapping.halfLineWidth) - mapping.halfLineWidth*3)/2) + mapping.halfLineWidth*3;
-  if(towerSelect)
+  if(towerSelect == false)
   {
     for(i = 1; i < 6; i++)
     {
       if(mouseX > mapping.pos1*i && mouseX < mapping.pos1*(i+1) && mouseY < height && mouseY > mapping.pos2*5)
       {
-        //GameObject tower1 = new Tower1();
-        //gameObjects.add(tower1);
         towerSelect = true;
+        selectedTower = i;
       }
     }
   }
-  else if(mouseX > mapping.pos1+mapping.halfLineWidth*4 && mouseX < halfFirstBoxW && mouseY < halfFirstBoxV && mouseY > mapping.halfLineWidth * 3)
+  else
   {
-    GameObject tower1 = new Tower1();
-    gameObjects.add(tower1);
-    tower1.towerCheck[0] = true;
-    towerSelect = false;
+    if(selectedTower == 1)
+    {
+      GameObject tower1 = new Tower1();
+      gameObjects.add(tower1);
+      tower1.Place();
+      towerSelect = false;
+    }
+    if(selectedTower == 2)
+    {
+      tower1.Place();
+      towerSelect = false;
+    }
+    if(selectedTower == 3)
+    {
+      tower1.Place();
+      towerSelect = false;
+    }
+    if(selectedTower == 4)
+    {
+      tower1.Place();
+      towerSelect = false;
+    }
+    if(selectedTower == 5)
+    {
+      tower1.Place();
+      towerSelect = false;
+    }
   }
 }

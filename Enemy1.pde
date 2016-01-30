@@ -18,6 +18,10 @@ class Enemy1 extends GameObject
     rect(starPos.x, starPos.y, 20, 20);
   }
   
+  void Place()
+  {
+  }
+  
   void Update()
   {
     stroke(255, 255, 0);
@@ -113,5 +117,4 @@ class Enemy1 extends GameObject
       direction = 0;
     }
   }
-  
 }
