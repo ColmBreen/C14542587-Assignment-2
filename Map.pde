@@ -16,6 +16,11 @@ class Map
     hrzMidPath = ((pos2*5)/2);
   }
   
+  void Highlight()
+  {
+    
+  }
+  
   void RenderMap()
   {
     background(0);

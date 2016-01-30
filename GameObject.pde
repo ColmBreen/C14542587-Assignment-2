@@ -6,6 +6,8 @@ abstract class GameObject extends Map
   boolean[] towerPlaced = new boolean[5];
   float halfFirstBoxW = (((mapping.middlePath-mapping.halfLineWidth) - (mapping.pos1+(mapping.halfLineWidth*4)))/2)+(mapping.pos1+(mapping.halfLineWidth*4)); 
   float halfFirstBoxV = (((mapping.hrzMidPath - mapping.halfLineWidth) - (mapping.halfLineWidth*3))/2) + (mapping.halfLineWidth*3);
+  float halfRightBoxW = (((width - (halfLineWidth*4)) - (middlePath + halfLineWidth))/2) + (middlePath + halfLineWidth);
+  float halfBottomBoxV = ((((pos2*5) - (halfLineWidth*3)) - (hrzMidPath + halfLineWidth))/2) + (hrzMidPath + halfLineWidth);
   
   GameObject()
   {

@@ -157,15 +157,15 @@ class Tower1 extends GameObject
     fill(255, 0, 0);
     rect(((halfFirstBoxW - (pos1 + halfLineWidth*4))/2) + (pos1 + halfLineWidth*4), (((hrzMidPath - halfLineWidth) - halfFirstBoxV)/2) + halfFirstBoxV, 40, 30); 
     }
-    //if(towerCheck[0] == true)
-    //{
-    // rectMode(CENTER);
-    // stroke(255);
-    // fill(255);
-    // rect(((halfFirstBoxW - (pos1 + halfLineWidth*4))/2) + (pos1 + halfLineWidth*4), ((halfFirstBoxV - halfLineWidth * 3)/2) + halfLineWidth*3, 60, 50);
-    // fill(255, 0, 0);
-    // rect(((halfFirstBoxW - (pos1 + halfLineWidth*4))/2) + (pos1 + halfLineWidth*4), ((halfFirstBoxV - halfLineWidth * 3)/2) + halfLineWidth*3, 40, 30); 
-    //}
+    if(towerCheck[3] == true)
+    {
+    rectMode(CENTER);
+    stroke(255);
+    fill(255);
+    rect((((middlePath - halfLineWidth) - halfFirstBoxW)/2) + (halfFirstBoxW), (((hrzMidPath - halfLineWidth) - halfFirstBoxV)/2) + halfFirstBoxV, 60, 50);
+    fill(255, 0, 0);
+    rect((((middlePath - halfLineWidth) - halfFirstBoxW)/2) + (halfFirstBoxW), (((hrzMidPath - halfLineWidth) - halfFirstBoxV)/2) + halfFirstBoxV, 40, 30); 
+    }
     //if(towerCheck[0] == true)
     //{
     // rectMode(CENTER);
