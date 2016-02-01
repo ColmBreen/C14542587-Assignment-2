@@ -135,36 +135,44 @@ class Tower1 extends GameObject
      rectMode(CENTER);
      stroke(255);
      fill(255);
-     rect(((halfFirstBoxW - (pos1 + halfLineWidth*4))/2) + (pos1 + halfLineWidth*4), ((halfFirstBoxV - halfLineWidth * 3)/2) + halfLineWidth*3, 60, 50);
+     starPos.x = ((halfFirstBoxW - (pos1 + halfLineWidth*4))/2) + (pos1 + halfLineWidth*4);
+     starPos.y = ((halfFirstBoxV - halfLineWidth * 3)/2) + halfLineWidth*3;
+     rect(starPos.x, starPos.y, 60, 50);
      fill(255, 0, 0);
-     rect(((halfFirstBoxW - (pos1 + halfLineWidth*4))/2) + (pos1 + halfLineWidth*4), ((halfFirstBoxV - halfLineWidth * 3)/2) + halfLineWidth*3, 40, 30); 
+     rect(starPos.x, starPos.y, 40, 30); 
     }
     else if(towerCheck[1] == true)
     {
     rectMode(CENTER);
     stroke(255);
     fill(255);
-    rect((((middlePath - halfLineWidth) - halfFirstBoxW)/2) + (halfFirstBoxW), ((halfFirstBoxV - halfLineWidth * 3)/2) + halfLineWidth*3, 60, 50);
+    starPos.x = (((middlePath - halfLineWidth) - halfFirstBoxW)/2) + (halfFirstBoxW);
+    starPos.y = ((halfFirstBoxV - halfLineWidth * 3)/2) + halfLineWidth*3;
+    rect(starPos.x, starPos.y, 60, 50);
     fill(255, 0, 0);
-    rect((((middlePath - halfLineWidth) - halfFirstBoxW)/2) + (halfFirstBoxW), ((halfFirstBoxV - halfLineWidth * 3)/2) + halfLineWidth*3, 40, 30); 
+    rect(starPos.x, starPos.y, 40, 30); 
     }
     if(towerCheck[2] == true)
     {
     rectMode(CENTER);
     stroke(255);
     fill(255);
-    rect(((halfFirstBoxW - (pos1 + halfLineWidth*4))/2) + (pos1 + halfLineWidth*4), (((hrzMidPath - halfLineWidth) - halfFirstBoxV)/2) + halfFirstBoxV, 60, 50);
+    starPos.x = ((halfFirstBoxW - (pos1 + halfLineWidth*4))/2) + (pos1 + halfLineWidth*4);
+    starPos.y = (((hrzMidPath - halfLineWidth) - halfFirstBoxV)/2) + halfFirstBoxV;
+    rect(starPos.x, starPos.y, 60, 50);
     fill(255, 0, 0);
-    rect(((halfFirstBoxW - (pos1 + halfLineWidth*4))/2) + (pos1 + halfLineWidth*4), (((hrzMidPath - halfLineWidth) - halfFirstBoxV)/2) + halfFirstBoxV, 40, 30); 
+    rect(starPos.x, starPos.y, 40, 30); 
     }
     if(towerCheck[3] == true)
     {
     rectMode(CENTER);
     stroke(255);
     fill(255);
-    rect((((middlePath - halfLineWidth) - halfFirstBoxW)/2) + (halfFirstBoxW), (((hrzMidPath - halfLineWidth) - halfFirstBoxV)/2) + halfFirstBoxV, 60, 50);
+    starPos.x = (((middlePath - halfLineWidth) - halfFirstBoxW)/2) + (halfFirstBoxW);
+    starPos.y = (((hrzMidPath - halfLineWidth) - halfFirstBoxV)/2) + halfFirstBoxV;
+    rect(starPos.x, starPos.y, 60, 50);
     fill(255, 0, 0);
-    rect((((middlePath - halfLineWidth) - halfFirstBoxW)/2) + (halfFirstBoxW), (((hrzMidPath - halfLineWidth) - halfFirstBoxV)/2) + halfFirstBoxV, 40, 30); 
+    rect(starPos.x, starPos.y, 40, 30); 
     }
     //if(towerCheck[0] == true)
     //{
@@ -274,5 +282,26 @@ class Tower1 extends GameObject
     // fill(255, 0, 0);
     // rect(((halfFirstBoxW - (pos1 + halfLineWidth*4))/2) + (pos1 + halfLineWidth*4), ((halfFirstBoxV - halfLineWidth * 3)/2) + halfLineWidth*3, 40, 30); 
     //}
+    
+    for(int i = gameObjects.size() - 1; i >= 0; i--)
+    {
+    GameObject go = gameObjects.get(i);
+     if(go instanceof Tower1)
+     {
+        for(int j = gameObjects.size() - 1; j >= 0; j--)
+        {
+          GameObject other = gameObjects.get(j);
+          if(other instanceof Enemy1)
+          {
+            if(go.starPos.dist(other.starPos) < 90)
+            {
+              //println("Hot!");
+
+            }
+          }
+        }
+      }
+    }
+    
   }
 }

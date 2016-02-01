@@ -18,7 +18,10 @@ class Map
   
   void Highlight()
   {
-    
+    //rectMode(CENTER);
+    //for(int i = 0; i < towerCheck.size(); i++)
+    //{
+    //}
   }
   
   void RenderMap()
