@@ -1,8 +1,12 @@
 /*
-  1. Create Variables for half way points in other three boxes.
-  2. Mouse Clicked = Check which tower was selected and call function in Map class to highlight available spaces.
-  3. Mouse Clicked again = Call function in relevant tower's class to check where mouse was clicked and place tower there.
-  4. Make tower's shoot stuff.
+  1. Create Bullets
+  2. Add health and cost to enemies and towers
+  3. Finish placing towers
+  4. Apply highlight for available areas for towers
+  5. Create 3 more types of enemies and 4 more types of towers
+  6. Make sprites look better
+  7. Add a menu and pause screen
+  8. Maybe add sound
 */
 void setup()
 {
@@ -41,7 +45,7 @@ void draw()
        go.Update();
      }
   }
-  if(frameCount % 120 == 0 && count < 10)
+  if(frameCount % 120 == 0 && count < 1)
   {
     GameObject enemy1 = new Enemy1();
     gameObjects.add(enemy1);

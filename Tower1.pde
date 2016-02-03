@@ -1,8 +1,10 @@
 class Tower1 extends GameObject
 {  
+  boolean collision;
   Tower1()
   {
     starPos = new PVector(pos1, pos2*5);
+    collision = false;
   }
   
   void Render()
@@ -22,8 +24,8 @@ class Tower1 extends GameObject
   
   void Place()
   {
-    if(mouseX > (mapping.pos1 + mapping.halfLineWidth*4) && mouseX < mapping.middlePath - mapping.halfLineWidth && 
-    mouseY > mapping.halfLineWidth*3 && mouseY < mapping.hrzMidPath - mapping.halfLineWidth)
+    if(mouseX > (pos1 + halfLineWidth*4) && mouseX < middlePath - halfLineWidth && 
+    mouseY > halfLineWidth*3 && mouseY < hrzMidPath - halfLineWidth)
     {
       if(mouseX < halfFirstBoxW)
       {
@@ -48,84 +50,84 @@ class Tower1 extends GameObject
         }
       }
     }
-    //if(mouseX > (mapping.pos1 + mapping.halfLineWidth*4) && mouseX < mapping.middlePath - mapping.halfLineWidth && 
-    //mouseY > mapping.halfLineWidth*3 && mouseY < mapping.hrzMidPath - mapping.halfLineWidth)
-    //{
-    //  if(mouseX < halfFirstBoxW)
-    //  {
-    //    if(mouseY < halfFirstBoxV)
-    //    {
-    //      towerCheck[0] = true;
-    //    }
-    //    else
-    //    {
-    //      towerCheck[3] = true;
-    //    }
-    //  }
-    //  else
-    //  {
-    //    if(mouseY < halfFirstBoxV)
-    //    {
-    //      towerCheck[2] = true;
-    //    }
-    //    else
-    //    {
-    //      towerCheck[4] = true;
-    //    }
-    //  }
-    //}
-    //if(mouseX > (mapping.pos1 + mapping.halfLineWidth*4) && mouseX < mapping.middlePath - mapping.halfLineWidth && 
-    //mouseY > mapping.halfLineWidth*3 && mouseY < mapping.hrzMidPath - mapping.halfLineWidth)
-    //{
-    //  if(mouseX < halfFirstBoxW)
-    //  {
-    //    if(mouseY < halfFirstBoxV)
-    //    {
-    //      towerCheck[0] = true;
-    //    }
-    //    else
-    //    {
-    //      towerCheck[3] = true;
-    //    }
-    //  }
-    //  else
-    //  {
-    //    if(mouseY < halfFirstBoxV)
-    //    {
-    //      towerCheck[2] = true;
-    //    }
-    //    else
-    //    {
-    //      towerCheck[4] = true;
-    //    }
-    //  }
-    //}
-    //if(mouseX > (mapping.pos1 + mapping.halfLineWidth*4) && mouseX < mapping.middlePath - mapping.halfLineWidth && 
-    //mouseY > mapping.halfLineWidth*3 && mouseY < mapping.hrzMidPath - mapping.halfLineWidth)
-    //{
-    //  if(mouseX < halfFirstBoxW)
-    //  {
-    //    if(mouseY < halfFirstBoxV)
-    //    {
-    //      towerCheck[0] = true;
-    //    }
-    //    else
-    //    {
-    //      towerCheck[3] = true;
-    //    }
-    //  }
-    //  else
-    //  {
-    //    if(mouseY < halfFirstBoxV)
-    //    {
-    //      towerCheck[2] = true;
-    //    }
-    //    else
-    //    {
-    //      towerCheck[4] = true;
-    //    }
-    //  }
-    //}
+    if(mouseX < (width - halfLineWidth*4) && mouseX > middlePath + halfLineWidth && 
+    mouseY > halfLineWidth*3 && mouseY < hrzMidPath - halfLineWidth)
+    {
+      if(mouseX < halfRightBoxW)
+      {
+        if(mouseY < halfFirstBoxV)
+        {
+          towerCheck[4] = true;
+        }
+        else
+        {
+          towerCheck[6] = true;
+        }
+      }
+      else
+      {
+        if(mouseY < halfFirstBoxV)
+        {
+          towerCheck[5] = true;
+        }
+        else
+        {
+          towerCheck[7] = true;
+        }
+      }
+    }
+    if(mouseX > (pos1 + halfLineWidth*4) && mouseX < middlePath - halfLineWidth && 
+    mouseY > hrzMidPath + halfLineWidth && mouseY < pos2*5 - (halfLineWidth*3))
+    {
+     if(mouseX < halfFirstBoxW)
+     {
+       if(mouseY < halfBottomBoxV)
+       {
+         towerCheck[8] = true;
+       }
+       else
+       {
+         towerCheck[10] = true;
+       }
+     }
+     else
+     {
+       if(mouseY < halfBottomBoxV)
+       {
+         towerCheck[9] = true;
+       }
+       else
+       {
+         towerCheck[11] = true;
+       }
+     }
+    }
+    if(mouseX < (width - halfLineWidth*4) && mouseX > middlePath + halfLineWidth && 
+    mouseY > hrzMidPath + halfLineWidth && mouseY < pos2*5 - (halfLineWidth*3))
+    {
+     if(mouseX < halfRightBoxW)
+     {
+       if(mouseY < halfBottomBoxV)
+       {
+         towerCheck[12] = true;
+       }
+       else
+       {
+         towerCheck[14] = true;
+       }
+     }
+     else
+     {
+       if(mouseY < halfBottomBoxV)
+       {
+         towerCheck[13] = true;
+       }
+       else
+       {
+         towerCheck[15] = true;
+       }
+     }
+    }
   }
   
   void Update()
@@ -174,114 +176,138 @@ class Tower1 extends GameObject
     fill(255, 0, 0);
     rect(starPos.x, starPos.y, 40, 30); 
     }
-    //if(towerCheck[0] == true)
-    //{
-    // rectMode(CENTER);
-    // stroke(255);
-    // fill(255);
-    // rect(((halfFirstBoxW - (pos1 + halfLineWidth*4))/2) + (pos1 + halfLineWidth*4), ((halfFirstBoxV - halfLineWidth * 3)/2) + halfLineWidth*3, 60, 50);
-    // fill(255, 0, 0);
-    // rect(((halfFirstBoxW - (pos1 + halfLineWidth*4))/2) + (pos1 + halfLineWidth*4), ((halfFirstBoxV - halfLineWidth * 3)/2) + halfLineWidth*3, 40, 30); 
-    //}
-    //if(towerCheck[0] == true)
-    //{
-    // rectMode(CENTER);
-    // stroke(255);
-    // fill(255);
-    // rect(((halfFirstBoxW - (pos1 + halfLineWidth*4))/2) + (pos1 + halfLineWidth*4), ((halfFirstBoxV - halfLineWidth * 3)/2) + halfLineWidth*3, 60, 50);
-    // fill(255, 0, 0);
-    // rect(((halfFirstBoxW - (pos1 + halfLineWidth*4))/2) + (pos1 + halfLineWidth*4), ((halfFirstBoxV - halfLineWidth * 3)/2) + halfLineWidth*3, 40, 30); 
-    //}
-    //if(towerCheck[0] == true)
-    //{
-    // rectMode(CENTER);
-    // stroke(255);
-    // fill(255);
-    // rect(((halfFirstBoxW - (pos1 + halfLineWidth*4))/2) + (pos1 + halfLineWidth*4), ((halfFirstBoxV - halfLineWidth * 3)/2) + halfLineWidth*3, 60, 50);
-    // fill(255, 0, 0);
-    // rect(((halfFirstBoxW - (pos1 + halfLineWidth*4))/2) + (pos1 + halfLineWidth*4), ((halfFirstBoxV - halfLineWidth * 3)/2) + halfLineWidth*3, 40, 30); 
-    //}
-    //if(towerCheck[0] == true)
-    //{
-    // rectMode(CENTER);
-    // stroke(255);
-    // fill(255);
-    // rect(((halfFirstBoxW - (pos1 + halfLineWidth*4))/2) + (pos1 + halfLineWidth*4), ((halfFirstBoxV - halfLineWidth * 3)/2) + halfLineWidth*3, 60, 50);
-    // fill(255, 0, 0);
-    // rect(((halfFirstBoxW - (pos1 + halfLineWidth*4))/2) + (pos1 + halfLineWidth*4), ((halfFirstBoxV - halfLineWidth * 3)/2) + halfLineWidth*3, 40, 30); 
-    //}
-    //if(towerCheck[0] == true)
-    //{
-    // rectMode(CENTER);
-    // stroke(255);
-    // fill(255);
-    // rect(((halfFirstBoxW - (pos1 + halfLineWidth*4))/2) + (pos1 + halfLineWidth*4), ((halfFirstBoxV - halfLineWidth * 3)/2) + halfLineWidth*3, 60, 50);
-    // fill(255, 0, 0);
-    // rect(((halfFirstBoxW - (pos1 + halfLineWidth*4))/2) + (pos1 + halfLineWidth*4), ((halfFirstBoxV - halfLineWidth * 3)/2) + halfLineWidth*3, 40, 30); 
-    //}
-    //if(towerCheck[0] == true)
-    //{
-    // rectMode(CENTER);
-    // stroke(255);
-    // fill(255);
-    // rect(((halfFirstBoxW - (pos1 + halfLineWidth*4))/2) + (pos1 + halfLineWidth*4), ((halfFirstBoxV - halfLineWidth * 3)/2) + halfLineWidth*3, 60, 50);
-    // fill(255, 0, 0);
-    // rect(((halfFirstBoxW - (pos1 + halfLineWidth*4))/2) + (pos1 + halfLineWidth*4), ((halfFirstBoxV - halfLineWidth * 3)/2) + halfLineWidth*3, 40, 30); 
-    //}
-    //if(towerCheck[0] == true)
-    //{
-    // rectMode(CENTER);
-    // stroke(255);
-    // fill(255);
-    // rect(((halfFirstBoxW - (pos1 + halfLineWidth*4))/2) + (pos1 + halfLineWidth*4), ((halfFirstBoxV - halfLineWidth * 3)/2) + halfLineWidth*3, 60, 50);
-    // fill(255, 0, 0);
-    // rect(((halfFirstBoxW - (pos1 + halfLineWidth*4))/2) + (pos1 + halfLineWidth*4), ((halfFirstBoxV - halfLineWidth * 3)/2) + halfLineWidth*3, 40, 30); 
-    //}
-    //if(towerCheck[0] == true)
-    //{
-    // rectMode(CENTER);
-    // stroke(255);
-    // fill(255);
-    // rect(((halfFirstBoxW - (pos1 + halfLineWidth*4))/2) + (pos1 + halfLineWidth*4), ((halfFirstBoxV - halfLineWidth * 3)/2) + halfLineWidth*3, 60, 50);
-    // fill(255, 0, 0);
-    // rect(((halfFirstBoxW - (pos1 + halfLineWidth*4))/2) + (pos1 + halfLineWidth*4), ((halfFirstBoxV - halfLineWidth * 3)/2) + halfLineWidth*3, 40, 30); 
-    //}
-    //if(towerCheck[0] == true)
-    //{
-    // rectMode(CENTER);
-    // stroke(255);
-    // fill(255);
-    // rect(((halfFirstBoxW - (pos1 + halfLineWidth*4))/2) + (pos1 + halfLineWidth*4), ((halfFirstBoxV - halfLineWidth * 3)/2) + halfLineWidth*3, 60, 50);
-    // fill(255, 0, 0);
-    // rect(((halfFirstBoxW - (pos1 + halfLineWidth*4))/2) + (pos1 + halfLineWidth*4), ((halfFirstBoxV - halfLineWidth * 3)/2) + halfLineWidth*3, 40, 30); 
-    //}
-    //if(towerCheck[0] == true)
-    //{
-    // rectMode(CENTER);
-    // stroke(255);
-    // fill(255);
-    // rect(((halfFirstBoxW - (pos1 + halfLineWidth*4))/2) + (pos1 + halfLineWidth*4), ((halfFirstBoxV - halfLineWidth * 3)/2) + halfLineWidth*3, 60, 50);
-    // fill(255, 0, 0);
-    // rect(((halfFirstBoxW - (pos1 + halfLineWidth*4))/2) + (pos1 + halfLineWidth*4), ((halfFirstBoxV - halfLineWidth * 3)/2) + halfLineWidth*3, 40, 30); 
-    //}
-    //if(towerCheck[0] == true)
-    //{
-    // rectMode(CENTER);
-    // stroke(255);
-    // fill(255);
-    // rect(((halfFirstBoxW - (pos1 + halfLineWidth*4))/2) + (pos1 + halfLineWidth*4), ((halfFirstBoxV - halfLineWidth * 3)/2) + halfLineWidth*3, 60, 50);
-    // fill(255, 0, 0);
-    // rect(((halfFirstBoxW - (pos1 + halfLineWidth*4))/2) + (pos1 + halfLineWidth*4), ((halfFirstBoxV - halfLineWidth * 3)/2) + halfLineWidth*3, 40, 30); 
-    //}
-    //if(towerCheck[0] == true)
-    //{
-    // rectMode(CENTER);
-    // stroke(255);
-    // fill(255);
-    // rect(((halfFirstBoxW - (pos1 + halfLineWidth*4))/2) + (pos1 + halfLineWidth*4), ((halfFirstBoxV - halfLineWidth * 3)/2) + halfLineWidth*3, 60, 50);
-    // fill(255, 0, 0);
-    // rect(((halfFirstBoxW - (pos1 + halfLineWidth*4))/2) + (pos1 + halfLineWidth*4), ((halfFirstBoxV - halfLineWidth * 3)/2) + halfLineWidth*3, 40, 30); 
-    //}
+    if(towerCheck[4] == true)
+    {
+    rectMode(CENTER);
+    stroke(255);
+    fill(255);
+    starPos.x = ((halfRightBoxW - (middlePath+halfLineWidth))/2) + (middlePath+halfLineWidth);
+    starPos.y = ((halfFirstBoxV - halfLineWidth * 3)/2) + halfLineWidth*3;
+    rect(starPos.x, starPos.y, 60, 50);
+    fill(255, 0, 0);
+    rect(starPos.x, starPos.y, 40, 30); 
+    }
+    if(towerCheck[5] == true)
+    {
+    rectMode(CENTER);
+    stroke(255);
+    fill(255);
+    starPos.x = (((width - (halfLineWidth*4)) - halfRightBoxW)/2) + halfRightBoxW;
+    starPos.y = ((halfFirstBoxV - halfLineWidth * 3)/2) + halfLineWidth*3;
+    rect(starPos.x, starPos.y, 60, 50);
+    fill(255, 0, 0);
+    rect(starPos.x, starPos.y, 40, 30);
+    }
+    if(towerCheck[6] == true)
+    {
+    rectMode(CENTER);
+    stroke(255);
+    fill(255);
+    starPos.x = ((halfRightBoxW - (middlePath+halfLineWidth))/2) + (middlePath+halfLineWidth);
+    starPos.y = (((hrzMidPath - halfLineWidth) - halfFirstBoxV)/2) + halfFirstBoxV;
+    rect(starPos.x, starPos.y, 60, 50);
+    fill(255, 0, 0);
+    rect(starPos.x, starPos.y, 40, 30); 
+    }
+    if(towerCheck[7] == true)
+    {
+    rectMode(CENTER);
+    stroke(255);
+    fill(255);
+    starPos.x = (((width - (halfLineWidth*4)) - halfRightBoxW)/2) + halfRightBoxW;
+    starPos.y = (((hrzMidPath - halfLineWidth) - halfFirstBoxV)/2) + halfFirstBoxV;
+    rect(starPos.x, starPos.y, 60, 50);
+    fill(255, 0, 0);
+    rect(starPos.x, starPos.y, 40, 30); 
+    }
+    if(towerCheck[8] == true)
+    {
+    rectMode(CENTER);
+    stroke(255);
+    fill(255);
+    starPos.x = ((halfFirstBoxW - (pos1 + halfLineWidth*4))/2) + (pos1 + halfLineWidth*4);
+    starPos.y = ((((pos2*5) - (halfLineWidth*3)) - halfBottomBoxV)/2) + (hrzMidPath + halfLineWidth);
+    rect(starPos.x, starPos.y, 60, 50);
+    fill(255, 0, 0);
+    rect(starPos.x, starPos.y, 40, 30); 
+    }
+    if(towerCheck[9] == true)
+    {
+    rectMode(CENTER);
+    stroke(255);
+    fill(255);
+    starPos.x = (((middlePath - halfLineWidth) - halfFirstBoxW)/2) + (halfFirstBoxW);
+    starPos.y = ((((pos2*5) - (halfLineWidth*3)) - halfBottomBoxV)/2) + (hrzMidPath + halfLineWidth);
+    rect(starPos.x, starPos.y, 60, 50);
+    fill(255, 0, 0);
+    rect(starPos.x, starPos.y, 40, 30); 
+    }
+    if(towerCheck[10] == true)
+    {
+    rectMode(CENTER);
+    stroke(255);
+    fill(255);
+    starPos.x = ((halfFirstBoxW - (pos1 + halfLineWidth*4))/2) + (pos1 + halfLineWidth*4);
+    starPos.y = ((((pos2*5) - (halfLineWidth*3)) - halfBottomBoxV)/2) + halfBottomBoxV;
+    rect(starPos.x, starPos.y, 60, 50);
+    fill(255, 0, 0);
+    rect(starPos.x, starPos.y, 40, 30); 
+    }
+    if(towerCheck[11] == true)
+    {
+    rectMode(CENTER);
+    stroke(255);
+    fill(255);
+    starPos.x = (((middlePath - halfLineWidth) - halfFirstBoxW)/2) + (halfFirstBoxW);
+    starPos.y = ((((pos2*5) - (halfLineWidth*3)) - halfBottomBoxV)/2) + halfBottomBoxV;
+    rect(starPos.x, starPos.y, 60, 50);
+    fill(255, 0, 0);
+    rect(starPos.x, starPos.y, 40, 30); 
+    }
+    if(towerCheck[12] == true)
+    {
+    rectMode(CENTER);
+    stroke(255);
+    fill(255);
+    starPos.x = ((halfRightBoxW - (middlePath+halfLineWidth))/2) + (middlePath+halfLineWidth);
+    starPos.y = ((((pos2*5) - (halfLineWidth*3)) - halfBottomBoxV)/2) + (hrzMidPath + halfLineWidth);
+    rect(starPos.x, starPos.y, 60, 50);
+    fill(255, 0, 0);
+    rect(starPos.x, starPos.y, 40, 30); 
+    }
+    if(towerCheck[13] == true)
+    {
+    rectMode(CENTER);
+    stroke(255);
+    fill(255);
+    starPos.x = (((width - (halfLineWidth*4)) - halfRightBoxW)/2) + halfRightBoxW;
+    starPos.y = ((((pos2*5) - (halfLineWidth*3)) - halfBottomBoxV)/2) + (hrzMidPath + halfLineWidth);
+    rect(starPos.x, starPos.y, 60, 50);
+    fill(255, 0, 0);
+    rect(starPos.x, starPos.y, 40, 30); 
+    }
+    if(towerCheck[14] == true)
+    {
+    rectMode(CENTER);
+    stroke(255);
+    fill(255);
+    starPos.x = ((halfRightBoxW - (middlePath+halfLineWidth))/2) + (middlePath+halfLineWidth);
+    starPos.y = ((((pos2*5) - (halfLineWidth*3)) - halfBottomBoxV)/2) + halfBottomBoxV;
+    rect(starPos.x, starPos.y, 60, 50);
+    fill(255, 0, 0);
+    rect(starPos.x, starPos.y, 40, 30); 
+    }
+    if(towerCheck[15] == true)
+    {
+    rectMode(CENTER);
+    stroke(255);
+    fill(255);
+    starPos.x = (((width - (halfLineWidth*4)) - halfRightBoxW)/2) + halfRightBoxW;
+    starPos.y = ((((pos2*5) - (halfLineWidth*3)) - halfBottomBoxV)/2) + halfBottomBoxV;
+    rect(starPos.x, starPos.y, 60, 50);
+    fill(255, 0, 0);
+    rect(starPos.x, starPos.y, 40, 30); 
+    }
     
     for(int i = gameObjects.size() - 1; i >= 0; i--)
     {
@@ -295,13 +321,15 @@ class Tower1 extends GameObject
           {
             if(go.starPos.dist(other.starPos) < 90)
             {
-              //println("Hot!");
-
+              if(frameCount % 30 == 0)
+              {
+                other.health -=1;
+                println(other.health);
+              }
             }
           }
         }
       }
     }
-    
   }
 }

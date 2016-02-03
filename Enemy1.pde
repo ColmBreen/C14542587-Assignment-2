@@ -15,6 +15,7 @@ class Enemy1 extends GameObject
     stroke(255, 255, 0);
     rectMode(CENTER);
     noFill();
+    text(health, starPos.x, starPos.y - 15);
     rect(starPos.x, starPos.y, 20, 20);
   }
   
@@ -25,17 +26,21 @@ class Enemy1 extends GameObject
   void Update()
   {
     stroke(255, 255, 0);
+    if(health < 1)
+    {
+      gameObjects.remove(this);
+    }
     if(direction == 0)
     {
-      starPos.y+=1;
+      starPos.y+=.5;
     }
     else if(direction == 1)
     {
-      starPos.x+=1;
+      starPos.x+=.5;
     }
     else
     {
-      starPos.x-=1;
+      starPos.x-=.5;
     }
     //Enemy got through  
     if(starPos.y > pos2*5)
@@ -45,7 +50,7 @@ class Enemy1 extends GameObject
     // Top middle lane random direction
     if(starPos.y > (halfLineWidth*2) && starPos.y < (halfLineWidth*3) && starPos.x > middlePath - halfLineWidth && starPos.x < middlePath+halfLineWidth && first == 0)
     {
-      direction = (int)random(0, 3);
+      direction = 3;//(int)random(0, 3);
       first = 1;
     }
     // top left corner direction change
