@@ -3,6 +3,7 @@ abstract class GameObject extends Map
   int health;
   PVector starPos;
   PVector forward = new PVector(0, -1);
+  PVector centre = new PVector(0, 0);
   float theta = 0.0f;
   boolean[] towerCheck = new boolean[16];
   boolean[] towerPlaced = new boolean[5];

@@ -18,8 +18,10 @@ void setup()
   tower1 = new Tower1();
   towerSelect = false;
   selectedTower = 0;
+  gold = 100;
 }
 
+int gold;
 boolean towerSelect;
 int count = 1;
 int selectedTower;
@@ -32,6 +34,9 @@ void draw()
 {
   mapping.RenderMap();
   tower1.Render();
+  textAlign(CENTER);
+  textSize(30);
+  text("$" + gold, (mapping.pos1/2), (mapping.pos2*5) + (mapping.pos2/2));
   for(int i = gameObjects.size() - 1 ; i >= 0   ;i --)
   {
      GameObject go = gameObjects.get(i);
@@ -45,6 +50,27 @@ void draw()
        go.Update();
      }
   }
+  for(int i = gameObjects.size() - 1; i >= 0; i--)
+    {
+    GameObject go = gameObjects.get(i);
+     if(go instanceof Tower1)
+     {
+        for(int j = gameObjects.size() - 1; j >= 0; j--)
+        {
+          GameObject other = gameObjects.get(j);
+          if(other instanceof Enemy1)
+          {
+            if(go.centre.dist(other.starPos) < 90)
+            {
+              if(frameCount % 60 == 0)
+              {
+                other.health -=2;
+              }
+            }
+          }
+        }
+      }
+    }
   if(frameCount % 120 == 0 && count < 1)
   {
     GameObject enemy1 = new Enemy1();
@@ -63,16 +89,23 @@ void draw()
 void mouseClicked()
 {
   int i;
+  boolean poor = false;
   if(towerSelect == false)
   {
     for(i = 1; i < 6; i++)
     {
-      if(mouseX > mapping.pos1*i && mouseX < mapping.pos1*(i+1) && mouseY < height && mouseY > mapping.pos2*5)
+      if(mouseX > mapping.pos1*i && mouseX < mapping.pos1*(i+1) && mouseY < height && mouseY > mapping.pos2*5 && gold >= (i * 50))
       {
         towerSelect = true;
         selectedTower = i;
       }
+      else if(gold <= (i * 50) && selectedTower == 0 && poor == false)
+      {
+        println("Out Of Cash!");
+        poor = true;
+      }
     }
+    poor = false;
   }
   else
   {
@@ -82,6 +115,8 @@ void mouseClicked()
       gameObjects.add(tower1);
       tower1.Place();
       towerSelect = false;
+      gold -= 50;
+      selectedTower = 0;
     }
     if(selectedTower == 2)
     {

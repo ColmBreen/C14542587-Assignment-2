@@ -6,7 +6,7 @@ class Enemy1 extends GameObject
   
   Enemy1()
   {
-    health = 10;
+    health = 25;
     starPos = new PVector(((width/6)*5)/2+pos1, 0);
   }
   
@@ -15,6 +15,7 @@ class Enemy1 extends GameObject
     stroke(255, 255, 0);
     rectMode(CENTER);
     noFill();
+    textSize(15);
     text(health, starPos.x, starPos.y - 15);
     rect(starPos.x, starPos.y, 20, 20);
   }
@@ -29,6 +30,7 @@ class Enemy1 extends GameObject
     if(health < 1)
     {
       gameObjects.remove(this);
+      gold += 10;
     }
     if(direction == 0)
     {

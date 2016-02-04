@@ -1,10 +1,14 @@
 class Tower1 extends GameObject
 {  
   boolean collision;
+  boolean cash;
   Tower1()
   {
     starPos = new PVector(pos1, pos2*5);
     collision = false;
+    centre.x = (starPos.x+(pos1/2));
+    centre.y = starPos.y + (pos2/2);
+    cash = false;
   }
   
   void Render()
@@ -16,10 +20,16 @@ class Tower1 extends GameObject
     rect((starPos.x), (starPos.y), pos1, pos2);
     rectMode(CENTER);
     stroke(255);
-    fill(255);
-    rect((starPos.x+(pos1/2)), starPos.y + (pos2/2), 60, 50);
-    fill(255, 0, 0);
-    rect((starPos.x+(pos1/2)), starPos.y + (pos2/2), 40, 30);     
+    fill(127);
+    rect(centre.x, centre.y, 60, 50);
+    fill(0, 0, 255);
+    ellipse(centre.x, centre.y, 40, 40);
+    if(cash == false)
+    {
+      textSize(15);
+      text("$50", centre.x - 10, centre.y + 40);
+    }
+    cash = false;
   }
   
   void Place()
@@ -134,202 +144,115 @@ class Tower1 extends GameObject
   {
     if(towerCheck[0] == true)
     {
-     rectMode(CENTER);
-     stroke(255);
-     fill(255);
-     starPos.x = ((halfFirstBoxW - (pos1 + halfLineWidth*4))/2) + (pos1 + halfLineWidth*4);
-     starPos.y = ((halfFirstBoxV - halfLineWidth * 3)/2) + halfLineWidth*3;
-     rect(starPos.x, starPos.y, 60, 50);
-     fill(255, 0, 0);
-     rect(starPos.x, starPos.y, 40, 30); 
+     centre.x = ((halfFirstBoxW - (pos1 + halfLineWidth*4))/2) + (pos1 + halfLineWidth*4);
+     centre.y = ((halfFirstBoxV - halfLineWidth * 3)/2) + halfLineWidth*3;
+     cash = true;
+     Render();
     }
     else if(towerCheck[1] == true)
     {
-    rectMode(CENTER);
-    stroke(255);
-    fill(255);
-    starPos.x = (((middlePath - halfLineWidth) - halfFirstBoxW)/2) + (halfFirstBoxW);
-    starPos.y = ((halfFirstBoxV - halfLineWidth * 3)/2) + halfLineWidth*3;
-    rect(starPos.x, starPos.y, 60, 50);
-    fill(255, 0, 0);
-    rect(starPos.x, starPos.y, 40, 30); 
+    centre.x = (((middlePath - halfLineWidth) - halfFirstBoxW)/2) + (halfFirstBoxW);
+    centre.y = ((halfFirstBoxV - halfLineWidth * 3)/2) + halfLineWidth*3;
+    cash = true;
+    Render();
     }
     if(towerCheck[2] == true)
     {
-    rectMode(CENTER);
-    stroke(255);
-    fill(255);
-    starPos.x = ((halfFirstBoxW - (pos1 + halfLineWidth*4))/2) + (pos1 + halfLineWidth*4);
-    starPos.y = (((hrzMidPath - halfLineWidth) - halfFirstBoxV)/2) + halfFirstBoxV;
-    rect(starPos.x, starPos.y, 60, 50);
-    fill(255, 0, 0);
-    rect(starPos.x, starPos.y, 40, 30); 
+    centre.x = ((halfFirstBoxW - (pos1 + halfLineWidth*4))/2) + (pos1 + halfLineWidth*4);
+    centre.y = (((hrzMidPath - halfLineWidth) - halfFirstBoxV)/2) + halfFirstBoxV;
+    cash = true;
+    Render();
     }
     if(towerCheck[3] == true)
     {
-    rectMode(CENTER);
-    stroke(255);
-    fill(255);
-    starPos.x = (((middlePath - halfLineWidth) - halfFirstBoxW)/2) + (halfFirstBoxW);
-    starPos.y = (((hrzMidPath - halfLineWidth) - halfFirstBoxV)/2) + halfFirstBoxV;
-    rect(starPos.x, starPos.y, 60, 50);
-    fill(255, 0, 0);
-    rect(starPos.x, starPos.y, 40, 30); 
+    centre.x = (((middlePath - halfLineWidth) - halfFirstBoxW)/2) + (halfFirstBoxW);
+    centre.y = (((hrzMidPath - halfLineWidth) - halfFirstBoxV)/2) + halfFirstBoxV; 
+    cash = true;
+    Render();
     }
     if(towerCheck[4] == true)
     {
-    rectMode(CENTER);
-    stroke(255);
-    fill(255);
-    starPos.x = ((halfRightBoxW - (middlePath+halfLineWidth))/2) + (middlePath+halfLineWidth);
-    starPos.y = ((halfFirstBoxV - halfLineWidth * 3)/2) + halfLineWidth*3;
-    rect(starPos.x, starPos.y, 60, 50);
-    fill(255, 0, 0);
-    rect(starPos.x, starPos.y, 40, 30); 
+    centre.x = ((halfRightBoxW - (middlePath+halfLineWidth))/2) + (middlePath+halfLineWidth);
+    centre.y = ((halfFirstBoxV - halfLineWidth * 3)/2) + halfLineWidth*3;
+    cash = true;
+    Render();
     }
     if(towerCheck[5] == true)
     {
-    rectMode(CENTER);
-    stroke(255);
-    fill(255);
-    starPos.x = (((width - (halfLineWidth*4)) - halfRightBoxW)/2) + halfRightBoxW;
-    starPos.y = ((halfFirstBoxV - halfLineWidth * 3)/2) + halfLineWidth*3;
-    rect(starPos.x, starPos.y, 60, 50);
-    fill(255, 0, 0);
-    rect(starPos.x, starPos.y, 40, 30);
+    centre.x = (((width - (halfLineWidth*4)) - halfRightBoxW)/2) + halfRightBoxW;
+    centre.y = ((halfFirstBoxV - halfLineWidth * 3)/2) + halfLineWidth*3;
+    cash = true;
+    Render();
     }
     if(towerCheck[6] == true)
     {
-    rectMode(CENTER);
-    stroke(255);
-    fill(255);
-    starPos.x = ((halfRightBoxW - (middlePath+halfLineWidth))/2) + (middlePath+halfLineWidth);
-    starPos.y = (((hrzMidPath - halfLineWidth) - halfFirstBoxV)/2) + halfFirstBoxV;
-    rect(starPos.x, starPos.y, 60, 50);
-    fill(255, 0, 0);
-    rect(starPos.x, starPos.y, 40, 30); 
+    centre.x = ((halfRightBoxW - (middlePath+halfLineWidth))/2) + (middlePath+halfLineWidth);
+    centre.y = (((hrzMidPath - halfLineWidth) - halfFirstBoxV)/2) + halfFirstBoxV;
+    cash = true;
+    Render();
     }
     if(towerCheck[7] == true)
     {
-    rectMode(CENTER);
-    stroke(255);
-    fill(255);
-    starPos.x = (((width - (halfLineWidth*4)) - halfRightBoxW)/2) + halfRightBoxW;
-    starPos.y = (((hrzMidPath - halfLineWidth) - halfFirstBoxV)/2) + halfFirstBoxV;
-    rect(starPos.x, starPos.y, 60, 50);
-    fill(255, 0, 0);
-    rect(starPos.x, starPos.y, 40, 30); 
+    centre.x = (((width - (halfLineWidth*4)) - halfRightBoxW)/2) + halfRightBoxW;
+    centre.y = (((hrzMidPath - halfLineWidth) - halfFirstBoxV)/2) + halfFirstBoxV;
+    cash = true;
+    Render();
     }
     if(towerCheck[8] == true)
     {
-    rectMode(CENTER);
-    stroke(255);
-    fill(255);
-    starPos.x = ((halfFirstBoxW - (pos1 + halfLineWidth*4))/2) + (pos1 + halfLineWidth*4);
-    starPos.y = ((((pos2*5) - (halfLineWidth*3)) - halfBottomBoxV)/2) + (hrzMidPath + halfLineWidth);
-    rect(starPos.x, starPos.y, 60, 50);
-    fill(255, 0, 0);
-    rect(starPos.x, starPos.y, 40, 30); 
+    centre.x = ((halfFirstBoxW - (pos1 + halfLineWidth*4))/2) + (pos1 + halfLineWidth*4);
+    centre.y = ((((pos2*5) - (halfLineWidth*3)) - halfBottomBoxV)/2) + (hrzMidPath + halfLineWidth); 
+    cash = true;
+    Render();
     }
     if(towerCheck[9] == true)
     {
-    rectMode(CENTER);
-    stroke(255);
-    fill(255);
-    starPos.x = (((middlePath - halfLineWidth) - halfFirstBoxW)/2) + (halfFirstBoxW);
-    starPos.y = ((((pos2*5) - (halfLineWidth*3)) - halfBottomBoxV)/2) + (hrzMidPath + halfLineWidth);
-    rect(starPos.x, starPos.y, 60, 50);
-    fill(255, 0, 0);
-    rect(starPos.x, starPos.y, 40, 30); 
+    centre.x = (((middlePath - halfLineWidth) - halfFirstBoxW)/2) + (halfFirstBoxW);
+    centre.y = ((((pos2*5) - (halfLineWidth*3)) - halfBottomBoxV)/2) + (hrzMidPath + halfLineWidth); 
+    cash = true;
+    Render();
     }
     if(towerCheck[10] == true)
     {
-    rectMode(CENTER);
-    stroke(255);
-    fill(255);
-    starPos.x = ((halfFirstBoxW - (pos1 + halfLineWidth*4))/2) + (pos1 + halfLineWidth*4);
-    starPos.y = ((((pos2*5) - (halfLineWidth*3)) - halfBottomBoxV)/2) + halfBottomBoxV;
-    rect(starPos.x, starPos.y, 60, 50);
-    fill(255, 0, 0);
-    rect(starPos.x, starPos.y, 40, 30); 
+    centre.x = ((halfFirstBoxW - (pos1 + halfLineWidth*4))/2) + (pos1 + halfLineWidth*4);
+    centre.y = ((((pos2*5) - (halfLineWidth*3)) - halfBottomBoxV)/2) + halfBottomBoxV;
+    cash = true;
+    Render();
     }
     if(towerCheck[11] == true)
     {
-    rectMode(CENTER);
-    stroke(255);
-    fill(255);
-    starPos.x = (((middlePath - halfLineWidth) - halfFirstBoxW)/2) + (halfFirstBoxW);
-    starPos.y = ((((pos2*5) - (halfLineWidth*3)) - halfBottomBoxV)/2) + halfBottomBoxV;
-    rect(starPos.x, starPos.y, 60, 50);
-    fill(255, 0, 0);
-    rect(starPos.x, starPos.y, 40, 30); 
+    centre.x = (((middlePath - halfLineWidth) - halfFirstBoxW)/2) + (halfFirstBoxW);
+    centre.y = ((((pos2*5) - (halfLineWidth*3)) - halfBottomBoxV)/2) + halfBottomBoxV;
+    cash = true;
+    Render();
     }
     if(towerCheck[12] == true)
     {
-    rectMode(CENTER);
-    stroke(255);
-    fill(255);
-    starPos.x = ((halfRightBoxW - (middlePath+halfLineWidth))/2) + (middlePath+halfLineWidth);
-    starPos.y = ((((pos2*5) - (halfLineWidth*3)) - halfBottomBoxV)/2) + (hrzMidPath + halfLineWidth);
-    rect(starPos.x, starPos.y, 60, 50);
-    fill(255, 0, 0);
-    rect(starPos.x, starPos.y, 40, 30); 
+    centre.x = ((halfRightBoxW - (middlePath+halfLineWidth))/2) + (middlePath+halfLineWidth);
+    centre.y = ((((pos2*5) - (halfLineWidth*3)) - halfBottomBoxV)/2) + (hrzMidPath + halfLineWidth);
+    cash = true;
+    Render();
     }
     if(towerCheck[13] == true)
     {
-    rectMode(CENTER);
-    stroke(255);
-    fill(255);
-    starPos.x = (((width - (halfLineWidth*4)) - halfRightBoxW)/2) + halfRightBoxW;
-    starPos.y = ((((pos2*5) - (halfLineWidth*3)) - halfBottomBoxV)/2) + (hrzMidPath + halfLineWidth);
-    rect(starPos.x, starPos.y, 60, 50);
-    fill(255, 0, 0);
-    rect(starPos.x, starPos.y, 40, 30); 
+    centre.x = (((width - (halfLineWidth*4)) - halfRightBoxW)/2) + halfRightBoxW;
+    centre.y = ((((pos2*5) - (halfLineWidth*3)) - halfBottomBoxV)/2) + (hrzMidPath + halfLineWidth); 
+    cash = true;
+    Render();
     }
     if(towerCheck[14] == true)
     {
-    rectMode(CENTER);
-    stroke(255);
-    fill(255);
-    starPos.x = ((halfRightBoxW - (middlePath+halfLineWidth))/2) + (middlePath+halfLineWidth);
-    starPos.y = ((((pos2*5) - (halfLineWidth*3)) - halfBottomBoxV)/2) + halfBottomBoxV;
-    rect(starPos.x, starPos.y, 60, 50);
-    fill(255, 0, 0);
-    rect(starPos.x, starPos.y, 40, 30); 
+    centre.x = ((halfRightBoxW - (middlePath+halfLineWidth))/2) + (middlePath+halfLineWidth);
+    centre.y = ((((pos2*5) - (halfLineWidth*3)) - halfBottomBoxV)/2) + halfBottomBoxV; 
+    cash = true;
+    Render();
     }
     if(towerCheck[15] == true)
     {
-    rectMode(CENTER);
-    stroke(255);
-    fill(255);
-    starPos.x = (((width - (halfLineWidth*4)) - halfRightBoxW)/2) + halfRightBoxW;
-    starPos.y = ((((pos2*5) - (halfLineWidth*3)) - halfBottomBoxV)/2) + halfBottomBoxV;
-    rect(starPos.x, starPos.y, 60, 50);
-    fill(255, 0, 0);
-    rect(starPos.x, starPos.y, 40, 30); 
-    }
-    
-    for(int i = gameObjects.size() - 1; i >= 0; i--)
-    {
-    GameObject go = gameObjects.get(i);
-     if(go instanceof Tower1)
-     {
-        for(int j = gameObjects.size() - 1; j >= 0; j--)
-        {
-          GameObject other = gameObjects.get(j);
-          if(other instanceof Enemy1)
-          {
-            if(go.starPos.dist(other.starPos) < 90)
-            {
-              if(frameCount % 30 == 0)
-              {
-                other.health -=1;
-                println(other.health);
-              }
-            }
-          }
-        }
-      }
+    centre.x = (((width - (halfLineWidth*4)) - halfRightBoxW)/2) + halfRightBoxW;
+    centre.y = ((((pos2*5) - (halfLineWidth*3)) - halfBottomBoxV)/2) + halfBottomBoxV;
+    cash = true;
+    Render();
     }
   }
 }
