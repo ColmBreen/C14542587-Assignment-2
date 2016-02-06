@@ -7,11 +7,12 @@ void setup()
   gameObjects.add(enemy1);
   tower1 = new Tower1();
   tower2 = new Tower2();
+  tower3 = new Tower3();
   round = new Round();
   towerSelect = false;
   selectedTower = 0;
   menu = true;
-  gold = 100;
+  gold = 200;
 }
 
 int gold;
@@ -20,6 +21,7 @@ int count = 1;
 int selectedTower;
 Tower1 tower1;
 Tower2 tower2;
+Tower3 tower3;
 Enemy1 enemy1;
 Round round;
 Map mapping;
@@ -48,6 +50,7 @@ void draw()
     mapping.RenderMap();
     tower1.Render();
     tower2.Render();
+    tower3.Render();
     textAlign(CENTER);
     textSize(30);
     fill(0, 0, 255);
@@ -55,7 +58,7 @@ void draw()
     for(int i = gameObjects.size() - 1 ; i >= 0   ;i --)
     {
        GameObject go = gameObjects.get(i);
-       if(go instanceof Tower1 || go instanceof Tower2)
+       if(go instanceof Tower1 || go instanceof Tower2 || go instanceof Tower3)
        {
          go.Update();
        }
@@ -69,7 +72,7 @@ void draw()
     for(int i = gameObjects.size() - 1; i >= 0; i--)
       {
       GameObject go = gameObjects.get(i);
-       if(go instanceof Tower1 || go instanceof Tower2)
+       if(go instanceof Tower1 || go instanceof Tower2 || go instanceof Tower3)
        {
           for(int j = gameObjects.size() - 1; j >= 0; j--)
           {
@@ -87,6 +90,10 @@ void draw()
                   else if(go instanceof Tower2)
                   {
                     other.health -= 4;
+                  }
+                  else if(go instanceof Tower3)
+                  {
+                    other.health -= 6;
                   }
                 }
               }
@@ -137,26 +144,30 @@ void mouseClicked()
         gold -= 50;
         selectedTower = 0;
       }
-      if(selectedTower == 2 && round.rounds[0] == false)
+      if(selectedTower == 2)// && round.rounds[0] == false)
       {
         GameObject tower2 = new Tower2();
         gameObjects.add(tower2);
         tower2.Place();
         towerSelect = false;
         gold -= 100;
-        selectedTower = 1;
+        selectedTower = 0;
       }
-      if(selectedTower == 3 && round.rounds[0] == false && round.rounds[1] == false)
+      if(selectedTower == 3)// && round.rounds[0] == false && round.rounds[1] == false)
+      {
+        GameObject tower3 = new Tower3();
+        gameObjects.add(tower3);
+        tower3.Place();
+        towerSelect = false;
+        gold -= 100;
+        selectedTower = 0;
+      }
+      if(selectedTower == 4)// && round.rounds[0] == false && round.rounds[1] == false && round.rounds[3] == false)
       {
         tower1.Place();
         towerSelect = false;
       }
-      if(selectedTower == 4 && round.rounds[0] == false && round.rounds[1] == false && round.rounds[3] == false)
-      {
-        tower1.Place();
-        towerSelect = false;
-      }
-      if(selectedTower == 5 && round.rounds[0] == false && round.rounds[1] == false && round.rounds[3] == false && round.rounds[4] == false)
+      if(selectedTower == 5)// && round.rounds[0] == false && round.rounds[1] == false && round.rounds[3] == false && round.rounds[4] == false)
       {
         tower1.Place();
         towerSelect = false;
