@@ -6,13 +6,14 @@ class Enemy1 extends GameObject
   
   Enemy1()
   {
-    health = 25;
+    health = 15;
     starPos = new PVector(((width/6)*5)/2+pos1, 0);
   }
   
   void Render()
   {
     stroke(255, 255, 0);
+    fill(255, 255, 0);
     rectMode(CENTER);
     noFill();
     textSize(15);
@@ -52,7 +53,7 @@ class Enemy1 extends GameObject
     // Top middle lane random direction
     if(starPos.y > (halfLineWidth*2) && starPos.y < (halfLineWidth*3) && starPos.x > middlePath - halfLineWidth && starPos.x < middlePath+halfLineWidth && first == 0)
     {
-      direction = 3;//(int)random(0, 3);
+      direction = (int)random(0, 3);
       first = 1;
     }
     // top left corner direction change
