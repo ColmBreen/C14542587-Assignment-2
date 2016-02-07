@@ -1,5 +1,6 @@
 class Enemy1 extends GameObject
 {
+  Round round = new Round();
   int goal = 0;
   int direction = 0;
   int first=0, second=0, third=0, fourth=0;
@@ -31,6 +32,7 @@ class Enemy1 extends GameObject
     if(health < 1)
     {
       gameObjects.remove(this);
+      round.kills++;
       gold += 10;
     }
     if(direction == 0)
@@ -48,6 +50,7 @@ class Enemy1 extends GameObject
     //Enemy got through  
     if(starPos.y > pos2*5)
     {
+      round.goals++;
       gameObjects.remove(this);
     }
     // Top middle lane random direction
