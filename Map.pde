@@ -49,6 +49,12 @@ class Map
     rect(width-halfLineWidth*4, hrzMidPath+halfLineWidth, middlePath+halfLineWidth, (pos2*5)-halfLineWidth*3);
     halfBoxWidth = pos1+halfLineWidth*4 - middlePath-halfLineWidth;
     halfBoxHeight = halfLineWidth*3 - hrzMidPath-halfLineWidth;
-    
+    stroke(0, 0, 255);
+    fill(255);
+    rect(0, 0, pos1, pos2);
+    fill(255, 0, 0);
+    textAlign(CENTER);
+    textSize(30);
+    text("Ready", pos1 - (pos1/2), (pos2 - (pos2/2)) + 10);
   }
 }

@@ -4,7 +4,6 @@ void setup()
   background(0);
   mapping = new Map();
   enemy1 = new Enemy1();
-  gameObjects.add(enemy1);
   tower1 = new Tower1();
   tower2 = new Tower2();
   tower3 = new Tower3();
@@ -13,12 +12,14 @@ void setup()
   towerSelect = false;
   selectedTower = 0;
   menu = true;
-  gold = 200;
+  setup = false;
+  gold = 100; 
+  kills = 0;
+  goals = 0;
 }
 
-int gold;
-boolean towerSelect, menu;
-int count = 1;
+int gold, kills, goals;
+boolean towerSelect, menu, setup;
 int selectedTower;
 Tower1 tower1;
 Tower2 tower2;
@@ -31,6 +32,7 @@ ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
 
 void draw()
 {
+  println(kills);
   if(menu == true)
   {
     textSize(50);
@@ -108,12 +110,40 @@ void draw()
           }
         }
       }
-      round.roundChange();
-      if(frameCount % 90 == 0 && count < round.enemies)
+      if(setup == false)
       {
-        GameObject enemy1 = new Enemy1();
-        gameObjects.add(enemy1);
-        count++;
+        round.roundChange();
+        if(frameCount % 90 == 0)
+        {
+          if(round.count < round.enemies)
+          {
+            println(round.count);
+            GameObject enemy1 = new Enemy1();
+            gameObjects.add(enemy1);
+            round.count++;
+          }
+          else
+          {
+            round.roundChange();
+          }
+        }
+      }
+      if((kills + goals) > round.enemies)
+      {
+        setup = true;
+        for(int i = 0; i < 5; i++)
+        {
+          if(round.rounds[i] == true)
+          {
+            round.rounds[i] = false;
+            if(i < 4)
+            {
+              round.rounds[i+1] = true;
+              println("YO");
+            }
+            break;
+          }
+        }
       }
     }
 }
@@ -139,6 +169,10 @@ void mouseClicked()
           poor = true;
         }
       }
+      if(mouseX > 0 && mouseX < mapping.pos1 && mouseY > 0 && mouseY < mapping.pos2)
+      {
+        setup = false;
+      }
       poor = false;
     }
     else
@@ -152,42 +186,71 @@ void mouseClicked()
         gold -= 50;
         selectedTower = 0;
       }
-      if(selectedTower == 2 && round.rounds[0] == false)
+      if(selectedTower == 2)
       {
-        GameObject tower2 = new Tower2();
-        gameObjects.add(tower2);
-        tower2.Place();
-        towerSelect = false;
-        gold -= 100;
-        selectedTower = 0;
+        if(round.rounds[0] == false)
+        {
+          GameObject tower2 = new Tower2();
+          gameObjects.add(tower2);
+          tower2.Place();
+          towerSelect = false;
+          gold -= 100;
+          selectedTower = 0;
+        }
+        else
+        {
+          towerSelect = false;
+        }
       }
-      if(selectedTower == 3 && round.rounds[0] == false && round.rounds[1] == false)
+      if(selectedTower == 3)
       {
-        GameObject tower3 = new Tower3();
-        gameObjects.add(tower3);
-        tower3.Place();
-        towerSelect = false;
-        gold -= 150;
-        selectedTower = 0;
+        if(round.rounds[0] == false && round.rounds[1] == false)
+        {
+          GameObject tower3 = new Tower3();
+          gameObjects.add(tower3);
+          tower3.Place();
+          towerSelect = false;
+          gold -= 150;
+          selectedTower = 0;
+        }
+        else
+        {
+          towerSelect = false;
+        }
       }
-      if(selectedTower == 4 && round.rounds[0] == false && round.rounds[1] == false && round.rounds[3] == false)
+      if(selectedTower == 4)
       {
-        GameObject tower4 = new Tower4();
-        gameObjects.add(tower4);
-        tower4.Place();
-        towerSelect = false;
-        gold -= 200;
-        selectedTower = 0;
+        if(round.rounds[0] == false && round.rounds[1] == false && round.rounds[3] == false)
+        {
+          GameObject tower4 = new Tower4();
+          gameObjects.add(tower4);
+          tower4.Place();
+          towerSelect = false;
+          gold -= 200;
+          selectedTower = 0;
+        }
+        else
+        {
+          towerSelect = false;
+        }
       }
-      if(selectedTower == 5 && round.rounds[0] == false && round.rounds[1] == false && round.rounds[3] == false && round.rounds[4] == false)
+      if(selectedTower == 5)
       {
-        tower1.Place();
-        towerSelect = false;
+        if(round.rounds[0] == false && round.rounds[1] == false && round.rounds[3] == false && round.rounds[4] == false)
+        {
+          tower1.Place();
+          towerSelect = false;
+        }
+        else
+        {
+          towerSelect = false;
+        }
       }
     }
   }
   else if(mouseX > 200 && mouseX < 600 && mouseY > 250 && mouseY < 350)
   {
     menu = false;
+    setup = true;
   }
 }

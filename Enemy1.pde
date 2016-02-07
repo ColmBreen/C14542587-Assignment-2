@@ -32,7 +32,7 @@ class Enemy1 extends GameObject
     if(health < 1)
     {
       gameObjects.remove(this);
-      round.kills++;
+      kills ++;
       gold += 10;
     }
     if(direction == 0)
@@ -50,7 +50,7 @@ class Enemy1 extends GameObject
     //Enemy got through  
     if(starPos.y > pos2*5)
     {
-      round.goals++;
+      goals++;
       gameObjects.remove(this);
     }
     // Top middle lane random direction
