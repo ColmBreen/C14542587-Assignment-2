@@ -8,6 +8,7 @@ void setup()
   tower2 = new Tower2();
   tower3 = new Tower3();
   tower4 = new Tower4();
+  tower5 = new Tower5();
   round = new Round();
   towerSelect = false;
   selectedTower = 0;
@@ -25,6 +26,7 @@ Tower1 tower1;
 Tower2 tower2;
 Tower3 tower3;
 Tower4 tower4;
+Tower5 tower5;
 Enemy1 enemy1;
 Round round;
 Map mapping;
@@ -56,6 +58,7 @@ void draw()
     tower2.Render();
     tower3.Render();
     tower4.Render();
+    tower5.Render();
     textAlign(CENTER);
     textSize(30);
     fill(0, 0, 255);
@@ -63,7 +66,7 @@ void draw()
     for(int i = gameObjects.size() - 1 ; i >= 0   ;i --)
     {
        GameObject go = gameObjects.get(i);
-       if(go instanceof Tower1 || go instanceof Tower2 || go instanceof Tower3 || go instanceof Tower4)
+       if(go instanceof Tower1 || go instanceof Tower2 || go instanceof Tower3 || go instanceof Tower4 || go instanceof Tower5)
        {
          go.Update();
        }
@@ -77,7 +80,7 @@ void draw()
     for(int i = gameObjects.size() - 1; i >= 0; i--)
       {
       GameObject go = gameObjects.get(i);
-       if(go instanceof Tower1 || go instanceof Tower2 || go instanceof Tower3 || go instanceof Tower4)
+       if(go instanceof Tower1 || go instanceof Tower2 || go instanceof Tower3 || go instanceof Tower4 || go instanceof Tower5)
        {
           for(int j = gameObjects.size() - 1; j >= 0; j--)
           {
@@ -104,6 +107,10 @@ void draw()
                   {
                     other.health -= 8;
                   }
+                  else if(go instanceof Tower5)
+                  {
+                    other.health -= 10;
+                  }
                 }
               }
             }
@@ -117,7 +124,6 @@ void draw()
         {
           if(round.count < round.enemies)
           {
-            println(round.count);
             GameObject enemy1 = new Enemy1();
             gameObjects.add(enemy1);
             round.count++;
@@ -125,23 +131,6 @@ void draw()
           else
           {
             round.roundChange();
-          }
-        }
-      }
-      if((kills + goals) > round.enemies)
-      {
-        setup = true;
-        for(int i = 0; i < 5; i++)
-        {
-          if(round.rounds[i] == true)
-          {
-            round.rounds[i] = false;
-            if(i < 4)
-            {
-              round.rounds[i+1] = true;
-              println("YO");
-            }
-            break;
           }
         }
       }
@@ -238,8 +227,12 @@ void mouseClicked()
       {
         if(round.rounds[0] == false && round.rounds[1] == false && round.rounds[3] == false && round.rounds[4] == false)
         {
-          tower1.Place();
+          GameObject tower5 = new Tower5();
+          gameObjects.add(tower5);
+          tower5.Place();
           towerSelect = false;
+          gold -= 200;
+          selectedTower = 0;
         }
         else
         {

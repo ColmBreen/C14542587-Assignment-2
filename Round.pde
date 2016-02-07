@@ -30,12 +30,12 @@ class Round
        rounds[1] = true;
        kills = 0;
        goals = 0;
+       count = 0;
        setup = true;
       }
     }
     else if(rounds[1] == true)
     {
-      count = 0;
       enemies = 20;
       if((kills + goals) == enemies)
       {
@@ -43,12 +43,12 @@ class Round
        rounds[2] = true;
        kills = 0;
        goals = 0;
+       count = 0;
        setup = true;
       }
     }
     else if(rounds[2] == true)
     {
-      count = 0;
       enemies = 30;
       if((kills + goals) == enemies)
       {
@@ -56,32 +56,33 @@ class Round
        rounds[3] = true;
        kills = 0;
        goals = 0;
+       count = 0;
        setup = true;
       }
     }
     else if(rounds[3] == true)
     {
-      count = 0;
       enemies = 40;
       if((kills + goals) == enemies)
       {
-       rounds[4] = false;
-       rounds[5] = true;
+       rounds[3] = false;
+       rounds[4] = true;
        kills = 0;
        goals = 0;
+       count = 0;
        setup = true;
       }
     }
     else if(rounds[4] == true)
     {
-      count = 0;
       enemies = 50;
       if((kills + goals) == enemies)
       {
-       rounds[5] = false;
+       rounds[4] = false;
        kills = 0;
        goals = 0;
-       setup = true;
+       count = 0;
+       menu = true;
       }
     }
   }
