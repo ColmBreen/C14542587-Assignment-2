@@ -1,24 +1,25 @@
-class Enemy1 extends GameObject
+class Enemy3 extends GameObject
 {
   Round round = new Round();
+  Enemy1 enemy1 = new Enemy1();
   int goal = 0;
   int direction = 0;
   int first=0, second=0, third=0, fourth=0;
   
-  Enemy1()
+  Enemy3()
   {
-    health = 15;
+    health = 100;
     starPos = new PVector(((width/6)*5)/2+pos1, 0);
   }
   
   void Render()
   {
     stroke(255, 255, 0);
-    fill(255, 255, 0);
+    fill(0, 255, 255);
     rectMode(CENTER);
     textSize(15);
     text(health, starPos.x, starPos.y - 15);
-    rect(starPos.x, starPos.y, 10, 10);
+    rect(starPos.x, starPos.y, 15, 15);
   }
   
   void Place()
@@ -32,19 +33,19 @@ class Enemy1 extends GameObject
     {
       gameObjects.remove(this);
       kills ++;
-      gold += 20;
+      gold += 50;
     }
     if(direction == 0)
     {
-      starPos.y+=.7;
+      starPos.y+=.40;
     }
     else if(direction == 1)
     {
-      starPos.x+=.70;
+      starPos.x+=.40;
     }
     else
     {
-      starPos.x-=.70;
+      starPos.x-=.40;
     }
     //Enemy got through  
     if(starPos.y > pos2*5)
