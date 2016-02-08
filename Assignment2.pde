@@ -10,6 +10,7 @@ void setup()
   tower4 = new Tower4();
   tower5 = new Tower5();
   round = new Round();
+  towers = new Towers();
   towerSelect = false;
   selectedTower = 0;
   menu = true;
@@ -23,6 +24,7 @@ void setup()
 int gold, kills, goals;
 boolean towerSelect, menu, setup, setupPop;
 int selectedTower;
+Towers towers;
 Tower1 tower1;
 Tower2 tower2;
 Tower3 tower3;

@@ -2,6 +2,7 @@ class Tower1 extends GameObject
 {  
   boolean collision;
   boolean cash;
+  int i;
   Tower1()
   {
     starPos = new PVector(pos1, pos2*5);
@@ -34,110 +35,8 @@ class Tower1 extends GameObject
   
   void Place()
   {
-    if(mouseX > (pos1 + halfLineWidth*4) && mouseX < middlePath - halfLineWidth && 
-    mouseY > halfLineWidth*3 && mouseY < hrzMidPath - halfLineWidth)
-    {
-      if(mouseX < halfFirstBoxW)
-      {
-        if(mouseY < halfFirstBoxV)
-        {
-          towerCheck[0] = true;
-        }
-        else
-        {
-          towerCheck[2] = true;
-        }
-      }
-      else
-      {
-        if(mouseY < halfFirstBoxV)
-        {
-          towerCheck[1] = true;
-        }
-        else
-        {
-          towerCheck[3] = true;
-        }
-      }
-    }
-    if(mouseX < (width - halfLineWidth*4) && mouseX > middlePath + halfLineWidth && 
-    mouseY > halfLineWidth*3 && mouseY < hrzMidPath - halfLineWidth)
-    {
-      if(mouseX < halfRightBoxW)
-      {
-        if(mouseY < halfFirstBoxV)
-        {
-          towerCheck[4] = true;
-        }
-        else
-        {
-          towerCheck[6] = true;
-        }
-      }
-      else
-      {
-        if(mouseY < halfFirstBoxV)
-        {
-          towerCheck[5] = true;
-        }
-        else
-        {
-          towerCheck[7] = true;
-        }
-      }
-    }
-    if(mouseX > (pos1 + halfLineWidth*4) && mouseX < middlePath - halfLineWidth && 
-    mouseY > hrzMidPath + halfLineWidth && mouseY < pos2*5 - (halfLineWidth*3))
-    {
-     if(mouseX < halfFirstBoxW)
-     {
-       if(mouseY < halfBottomBoxV)
-       {
-         towerCheck[8] = true;
-       }
-       else
-       {
-         towerCheck[10] = true;
-       }
-     }
-     else
-     {
-       if(mouseY < halfBottomBoxV)
-       {
-         towerCheck[9] = true;
-       }
-       else
-       {
-         towerCheck[11] = true;
-       }
-     }
-    }
-    if(mouseX < (width - halfLineWidth*4) && mouseX > middlePath + halfLineWidth && 
-    mouseY > hrzMidPath + halfLineWidth && mouseY < pos2*5 - (halfLineWidth*3))
-    {
-     if(mouseX < halfRightBoxW)
-     {
-       if(mouseY < halfBottomBoxV)
-       {
-         towerCheck[12] = true;
-       }
-       else
-       {
-         towerCheck[14] = true;
-       }
-     }
-     else
-     {
-       if(mouseY < halfBottomBoxV)
-       {
-         towerCheck[13] = true;
-       }
-       else
-       {
-         towerCheck[15] = true;
-       }
-     }
-    }
+    this.i = towers.TowerPlace();
+    towerCheck[i] = true;
   }
   
   void Update()
