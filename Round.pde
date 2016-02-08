@@ -85,6 +85,5 @@ class Round
        menu = true;
       }
     }
-  }
-  
+  } 
 }
