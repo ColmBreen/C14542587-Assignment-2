@@ -3,7 +3,6 @@ void setup()
   size(800,600);  
   background(0);
   mapping = new Map();
-  //enemy1 = new Enemy1();
   tower1 = new Tower1();
   tower2 = new Tower2();
   tower3 = new Tower3();
@@ -87,98 +86,168 @@ void draw()
     }
     //Tower attacking enemies
     for(int i = gameObjects.size() - 1; i >= 0; i--)
-      {
+    {
       GameObject go = gameObjects.get(i);
-       if(go instanceof Tower1 || go instanceof Tower2 || go instanceof Tower3 || go instanceof Tower4 || go instanceof Tower5)
-       {
-          for(int j = gameObjects.size() - 1; j >= 0; j--)
+      if(go instanceof Tower1 || go instanceof Tower2 || go instanceof Tower3 || go instanceof Tower4 || go instanceof Tower5)
+      {
+        for(int j = gameObjects.size() - 1; j >= 0; j--)
+        {
+          GameObject other = gameObjects.get(j);
+          if(other instanceof Enemy1 || other instanceof Enemy2 || other instanceof Enemy3 || other instanceof Enemy4)
           {
-            GameObject other = gameObjects.get(j);
-            if(other instanceof Enemy1 || other instanceof Enemy2 || other instanceof Enemy3)
+            if((go instanceof Tower1 && go.centre.dist(other.starPos) < 100) || (go instanceof Tower2 && go.centre.dist(other.starPos) < 110) ||
+            (go instanceof Tower3 && go.centre.dist(other.starPos) < 120) || (go instanceof Tower4 && go.centre.dist(other.starPos) < 130) ||
+            (go instanceof Tower5 && go.centre.dist(other.starPos) < 140))
             {
-              if((go instanceof Tower1 && go.centre.dist(other.starPos) < 100) || (go instanceof Tower2 && go.centre.dist(other.starPos) < 110) ||
-              (go instanceof Tower3 && go.centre.dist(other.starPos) < 120) || (go instanceof Tower4 && go.centre.dist(other.starPos) < 130) ||
-              (go instanceof Tower5 && go.centre.dist(other.starPos) < 140))
+              if(frameCount % 30 == 0)
               {
-                if(frameCount % 30 == 0)
+                if(go instanceof Tower1)
                 {
-                  if(go instanceof Tower1)
-                  {
-                    other.health -= 2;
-                  }
-                  else if(go instanceof Tower2)
-                  {
-                    other.health -= 4;
-                  }
-                  else if(go instanceof Tower3)
-                  {
-                    other.health -= 8;
-                  }
-                  else if(go instanceof Tower4)
-                  {
-                    other.health -= 16;
-                  }
-                  else if(go instanceof Tower5)
-                  {
-                    other.health -= 32;
-                  }
+                  other.health -= 2;
+                }
+                else if(go instanceof Tower2)
+                {
+                  other.health -= 4;
+                }
+                else if(go instanceof Tower3)
+                {
+                  other.health -= 8;
+                }
+                else if(go instanceof Tower4)
+                {
+                  other.health -= 16;
+                }
+                else if(go instanceof Tower5)
+                {
+                  other.health -= 32;
                 }
               }
             }
           }
         }
       }
-      if(setup == false)
+    }
+    if(setup == false)
+    {
+      round.roundChange();
+      if(frameCount % 90 == 0)
       {
-        round.roundChange();
-        if(frameCount % 90 == 0)
+        if(round.count < round.enemies)
         {
-          if(round.count < round.enemies)
+          if(round.rounds[0] == true)
           {
-            if(round.rounds[0] == true)
+            GameObject enemy1 = new Enemy1();
+            gameObjects.add(enemy1);
+            round.count++;
+          }
+          else if(round.rounds[1] == true)
+          {
+            if(round.count < 10)
             {
               GameObject enemy1 = new Enemy1();
               gameObjects.add(enemy1);
               round.count++;
             }
-            else if(round.rounds[1] == true)
+            else
             {
-              if(round.count < 10)
-              {
-                GameObject enemy1 = new Enemy1();
-                gameObjects.add(enemy1);
-                round.count++;
-              }
-              else
-              {
-                GameObject enemy2 = new Enemy2();
-                gameObjects.add(enemy2);
-                round.count++;
-              }
-            }
-            else if(round.rounds[2] == true)
-            {
-              if(round.count < 15)
-              {
-                GameObject enemy2 = new Enemy2();
-                gameObjects.add(enemy2);
-                round.count++;
-              }
-              else
-              {
-                GameObject enemy3 = new Enemy3();
-                gameObjects.add(enemy3);
-                round.count++;
-              }
+              GameObject enemy2 = new Enemy2();
+              gameObjects.add(enemy2);
+              round.count++;
             }
           }
-          else
+          else if(round.rounds[2] == true)
           {
-            round.roundChange();
+            if(round.count < 15)
+            {
+              GameObject enemy2 = new Enemy2();
+              gameObjects.add(enemy2);
+              round.count++;
+            }
+            else
+            {
+              GameObject enemy3 = new Enemy3();
+              gameObjects.add(enemy3);
+              round.count++;
+            }
           }
+          else if(round.rounds[3] == true)
+          {
+            if(round.count < 20)
+            {
+              GameObject enemy3 = new Enemy3();
+              gameObjects.add(enemy3);
+              round.count++;
+            }
+            else
+            {
+              GameObject enemy4 = new Enemy4();
+              gameObjects.add(enemy4);
+              round.count++;
+            }
+          }
+          else if(round.rounds[4] == true)
+          {
+            if(round.count < 10)
+            {
+              GameObject enemy1 = new Enemy1();
+              gameObjects.add(enemy1);
+              round.count++;
+            }
+            else if(round.count < 20)
+            {
+              GameObject enemy2 = new Enemy2();
+              gameObjects.add(enemy2);
+              round.count++;
+            }
+            else if(round.count < 30)
+            {
+              GameObject enemy3 = new Enemy3();
+              gameObjects.add(enemy3);
+              round.count++;
+            }
+            else
+            {
+              GameObject enemy4 = new Enemy4();
+              gameObjects.add(enemy4);
+              round.count++;
+            }
+          }
+        }
+        else
+        {
+          round.roundChange();
         }
       }
     }
+    round.roundChange();
+    if(goals >= (round.enemies/2))
+    {
+       
+     println("game over");
+     kills = 0;
+     goals = 0;
+     round.count = 0;
+     menu = true;
+     //background(0);
+     for(int i = 0; i < gameObjects.size(); i++)
+     {
+       gameObjects.remove(gameObjects.get(i));
+     }
+     for(int i = 0; i < gameObjects.size(); i++)
+     {
+       gameObjects.remove(gameObjects.get(i));
+     }
+     for(int i = 0; i < gameObjects.size(); i++)
+     {
+       gameObjects.remove(gameObjects.get(i));
+     }
+     round.rounds[0] = true;
+     for(int i = 1; i < 5; i ++)
+     {
+       round.rounds[i] = false;
+     } 
+    }
+  }
 }
 
 void mouseClicked()
@@ -219,7 +288,6 @@ void mouseClicked()
           gameObjects.add(tower1);
           tower1.Place();
           towerSelect = false;
-          gold -= 50;
           selectedTower = 0;
         }
         if(selectedTower == 2)
@@ -230,7 +298,6 @@ void mouseClicked()
             gameObjects.add(tower2);
             tower2.Place();
             towerSelect = false;
-            gold -= 100;
             selectedTower = 0;
           }
           else
@@ -246,7 +313,6 @@ void mouseClicked()
             gameObjects.add(tower3);
             tower3.Place();
             towerSelect = false;
-            gold -= 150;
             selectedTower = 0;
           }
           else
@@ -262,7 +328,6 @@ void mouseClicked()
             gameObjects.add(tower4);
             tower4.Place();
             towerSelect = false;
-            gold -= 200;
             selectedTower = 0;
           }
           else
@@ -278,7 +343,6 @@ void mouseClicked()
             gameObjects.add(tower5);
             tower5.Place();
             towerSelect = false;
-            gold -= 200;
             selectedTower = 0;
           }
           else

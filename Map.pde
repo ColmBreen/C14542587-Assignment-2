@@ -5,15 +5,23 @@ class Map
   float middlePath;
   float hrzMidPath;
   int halfLineWidth = 30;
-  float halfBoxWidth;
-  float halfBoxHeight;
+  float halfFirstBoxW; 
+  float halfFirstBoxV;
+  float halfRightBoxW;
+  float halfBottomBoxV;
+  float MidBoxV;
   
   Map()
   {
+    halfFirstBoxW = (((middlePath-halfLineWidth) - (pos1+(halfLineWidth*4)))/2)+(pos1+(halfLineWidth*4));
+    halfFirstBoxV = (((hrzMidPath - halfLineWidth) - (halfLineWidth*3))/2) + (halfLineWidth*3);
+    halfRightBoxW = (((width - (halfLineWidth*4)) - (middlePath + halfLineWidth))/2) + (middlePath + halfLineWidth);
+    halfBottomBoxV = ((((pos2*5) - (halfLineWidth*3)) - (hrzMidPath + halfLineWidth))/2) + (hrzMidPath + halfLineWidth);
     pos1 = width/6;
     pos2 = height/6;
     middlePath = ((width/6)*5)/2+pos1;
     hrzMidPath = ((pos2*5)/2);
+    MidBoxV = ((hrzMidPath - halfLineWidth) - (((hrzMidPath - halfLineWidth) - (halfLineWidth*3))/2));
   }
   
   void Highlight()
@@ -31,6 +39,10 @@ class Map
     line(pos1, 0, pos1, height);
     line(0, pos2*5, width, pos2*5);
     stroke(255, 255, 0);
+    textSize(20);
+    fill(0, 0, 255);
+    text("Enemies Left:", pos1/2, pos2*1.25);
+    text(round.enemies - kills, pos1/2, pos2*1.5);
     line(middlePath-halfLineWidth, 0, middlePath-halfLineWidth, halfLineWidth);
     line(middlePath+halfLineWidth, 0, middlePath+halfLineWidth, halfLineWidth);
     line(middlePath+halfLineWidth, (pos2*5)-(halfLineWidth), middlePath+halfLineWidth, pos2*5);
@@ -47,8 +59,8 @@ class Map
     rect(pos1+halfLineWidth*4, hrzMidPath+halfLineWidth, middlePath-halfLineWidth, (pos2*5)-halfLineWidth*3);
     rect(width-halfLineWidth*4, halfLineWidth*3, middlePath+halfLineWidth, hrzMidPath-halfLineWidth);
     rect(width-halfLineWidth*4, hrzMidPath+halfLineWidth, middlePath+halfLineWidth, (pos2*5)-halfLineWidth*3);
-    halfBoxWidth = pos1+halfLineWidth*4 - middlePath-halfLineWidth;
-    halfBoxHeight = halfLineWidth*3 - hrzMidPath-halfLineWidth;
+    stroke(255);
+    line((pos1 + halfLineWidth*4), MidBoxV, (middlePath - halfLineWidth), MidBoxV);
     stroke(0, 0, 255);
     fill(255);
     rect(0, 0, pos1, pos2);

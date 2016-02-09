@@ -30,6 +30,11 @@ class Tower1 extends GameObject
       textSize(15);
       text("$50", centre.x - 10, centre.y + 40);
     }
+    else if(cashTaken == false)
+    {
+      gold -= 50;
+      cashTaken = true;
+    }
     cash = false;
   }
   
@@ -40,11 +45,14 @@ class Tower1 extends GameObject
   
   void Update()
   {
-    PVector temp = new PVector(0, 0);
-    temp = towers.TowerUpdate(i);
-    centre.x = temp.x;
-    centre.y = temp.y;
-    cash = true;
-    Render();
+    if(i != 50)
+    {
+      PVector temp = new PVector(0, 0);
+      temp = towers.TowerUpdate(i);
+      centre.x = temp.x;
+      centre.y = temp.y;
+      cash = true;
+      Render();
+    }
   }
 }

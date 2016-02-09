@@ -125,26 +125,54 @@ class Towers extends GameObject
       {
         if(mouseY < halfFirstBoxV)
         {
-          towerCheck[0] = true;
-          return 0;
+          if(towerCheck[0] == false)
+          {
+            towerCheck[0] = true;
+            return 0;
+          }
+          else
+          {
+            return 50;
+          }
         }
         else
         {
-          towerCheck[2] = true;
-          return 2;
+          if(towerCheck[2] == false)
+          {
+            towerCheck[2] = true;
+            return 2;
+          }
+          else
+          {
+            return 50;
+          }
         }
       }
       else
       {
         if(mouseY < halfFirstBoxV)
         {
-          towerCheck[1] = true;
-          return 1;
+          if(towerCheck[1] == false)
+          {
+            towerCheck[1] = true;
+            return 1;
+          }
+          else
+          {
+            return 50;
+          }
         }
         else
         {
-          towerCheck[3] = true;
-          return 3;
+          if(towerCheck[3] == false)
+          {
+            towerCheck[3] = true;
+            return 3;
+          }
+          else
+          {
+            return 50;
+          }
         }
       }
     }
@@ -155,26 +183,54 @@ class Towers extends GameObject
       {
         if(mouseY < halfFirstBoxV)
         {
-          towerCheck[4] = true;
-          return 4;
+          if(towerCheck[4] == false)
+          {
+            towerCheck[4] = true;
+            return 4;
+          }
+          else
+          {
+            return 50;
+          }
         }
         else
         {
-          towerCheck[6] = true;
-          return 6;
+          if(towerCheck[6] == false)
+          {
+            towerCheck[6] = true;
+            return 6;
+          }
+          else
+          {
+            return 50;
+          }
         }
       }
       else
       {
         if(mouseY < halfFirstBoxV)
         {
-          towerCheck[5] = true;
-          return 5;
+          if(towerCheck[5] == false)
+          {
+            towerCheck[5] = true;
+            return 5;
+          }
+          else
+          {
+            return 50;
+          }
         }
         else
         {
-          towerCheck[7] = true;
-          return 7;
+          if(towerCheck[7] == false)
+          {
+            towerCheck[7] = true;
+            return 7;
+          }
+          else
+          {
+            return 50;
+          }
         }
       }
     }
@@ -185,26 +241,54 @@ class Towers extends GameObject
      {
        if(mouseY < halfBottomBoxV)
        {
-         towerCheck[8] = true;
-         return 8;
+         if(towerCheck[8] == false)
+          {
+            towerCheck[8] = true;
+            return 8;
+          }
+          else
+          {
+            return 50;
+          }
        }
        else
        {
-         towerCheck[10] = true;
-         return 10;
+         if(towerCheck[10] == false)
+          {
+            towerCheck[10] = true;
+            return 10;
+          }
+          else
+          {
+            return 50;
+          }
        }
      }
      else
      {
        if(mouseY < halfBottomBoxV)
        {
-         towerCheck[9] = true;
-         return 9;
+         if(towerCheck[9] == false)
+          {
+            towerCheck[9] = true;
+            return 9;
+          }
+          else
+          {
+            return 50;
+          }
        }
        else
        {
-         towerCheck[11] = true;
-         return 11;
+         if(towerCheck[11] == false)
+          {
+            towerCheck[11] = true;
+            return 11;
+          }
+          else
+          {
+            return 50;
+          }
        }
      }
     }
@@ -215,26 +299,54 @@ class Towers extends GameObject
      {
        if(mouseY < halfBottomBoxV)
        {
-         towerCheck[12] = true;
-         return 12;
+         if(towerCheck[12] == false)
+          {
+            towerCheck[12] = true;
+            return 12;
+          }
+          else
+          {
+            return 50;
+          }
        }
        else
        {
-         towerCheck[14] = true;
-         return 14;
+         if(towerCheck[14] == false)
+          {
+            towerCheck[14] = true;
+            return 14;
+          }
+          else
+          {
+            return 50;
+          }
        }
      }
      else
      {
        if(mouseY < halfBottomBoxV)
        {
-         towerCheck[13] = true;
-         return 13;
+         if(towerCheck[13] == false)
+          {
+            towerCheck[13] = true;
+            return 13;
+          }
+          else
+          {
+            return 50;
+          }
        }
        else
        {
-         towerCheck[15] = true;
-         return 15;
+         if(towerCheck[15] == false)
+          {
+            towerCheck[15] = true;
+            return 15;
+          }
+          else
+          {
+            return 50;
+          }
        }
      }
     }

@@ -5,6 +5,7 @@ abstract class GameObject extends Map
   PVector forward = new PVector(0, -1);
   PVector centre = new PVector(0, 0);
   float theta = 0.0f;
+  boolean cashTaken;
   boolean[] towerCheck = new boolean[16];
   boolean[] towerPlaced = new boolean[5];
   float halfFirstBoxW = (((mapping.middlePath-mapping.halfLineWidth) - (mapping.pos1+(mapping.halfLineWidth*4)))/2)+(mapping.pos1+(mapping.halfLineWidth*4)); 
@@ -18,6 +19,7 @@ abstract class GameObject extends Map
     {
       towerCheck[i] = false;
     }
+    cashTaken = false;
   }
   
   abstract void Render();

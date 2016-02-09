@@ -32,6 +32,7 @@ class Round
        goals = 0;
        count = 0;
        setup = true;
+       setupPop = true;
       }
     }
     else if(rounds[1] == true)
@@ -45,6 +46,7 @@ class Round
        goals = 0;
        count = 0;
        setup = true;
+       setupPop = true;
       }
     }
     else if(rounds[2] == true)
@@ -58,6 +60,7 @@ class Round
        goals = 0;
        count = 0;
        setup = true;
+       setupPop = true;
       }
     }
     else if(rounds[3] == true)
@@ -71,6 +74,7 @@ class Round
        goals = 0;
        count = 0;
        setup = true;
+       setupPop = true;
       }
     }
     else if(rounds[4] == true)
