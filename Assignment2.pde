@@ -48,10 +48,8 @@ void draw()
     rectMode(CENTER);
     fill(255);
     rect(400, 300, 400, 100);
-    rect(400, 450, 400, 100);
     fill(255, 0, 0);
     text("Play", 400, 310);
-    text("Options", 400, 460);
   }
   else
   {

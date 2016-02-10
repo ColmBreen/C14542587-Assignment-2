@@ -19,7 +19,7 @@ class Enemy3 extends GameObject
     rectMode(CENTER);
     textSize(15);
     text(health, starPos.x, starPos.y - 15);
-    rect(starPos.x, starPos.y, 15, 15);
+    rect(starPos.x, starPos.y, 20, 20);
   }
   
   void Place()
