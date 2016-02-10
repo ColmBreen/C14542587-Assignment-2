@@ -18,6 +18,6 @@ tower. Towers are selected by clicking on their icon at the bottom of the screen
 on the space of the map where you wish to place it. If a tower has already been placed in a space, no other tower can be 
 placed there.
 
-![alt tag](https://github.com/ColmBreen/C14542587-Assignment-2/tree/master/data/Menu.png)
-![alt tag](https://github.com/ColmBreen/C14542587-Assignment-2/tree/master/data/SetUpPhase.png)
-![alt tag](https://github.com/ColmBreen/C14542587-Assignment-2/tree/master/data/gamePlay.png)
+![alt tag](https://github.com/ColmBreen/C14542587-Assignment-2/blob/master/data/Menu.png)
+![alt tag](https://github.com/ColmBreen/C14542587-Assignment-2/blob/master/data/SetUpPhase.png)
+![alt tag](https://github.com/ColmBreen/C14542587-Assignment-2/blob/master/data/gamePlay.png)
