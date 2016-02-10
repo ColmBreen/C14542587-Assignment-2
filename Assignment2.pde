@@ -72,6 +72,10 @@ void draw()
     rect(400, 300, 400, 100);
     fill(255, 0, 0);
     text("Play", 400, 310);
+    fill(255);
+    rect(400, 450, 400, 100);
+    fill(255, 0, 0);
+    text("Quit Game", 400, 460);
   }
   else
   {
@@ -386,11 +390,15 @@ void mouseClicked()
     setup = true;
     setupPop = true;
   }
-  else if(mouseX > 200 && mouseX < 600 && mouseY > 250 && mouseY < 350 && menu == true)
+  else if(menu == true && mouseX > 200 && mouseX < 600 && mouseY > 250 && mouseY < 350)
   {
     menu = false;
     setup = true;
     setupPop = true;
     println("Setup Phase");
+  }
+  else if(menu == true && mouseX > 200 && mouseX < 600 && mouseY > 400 && mouseY < 500)
+  {
+    exit();
   }
 }
