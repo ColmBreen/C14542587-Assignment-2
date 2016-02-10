@@ -38,6 +38,8 @@ class Tower1 extends GameObject
     cash = false;
   }
   
+  
+  
   void Place()
   {
     this.i = towers.TowerPlace();

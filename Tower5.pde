@@ -38,22 +38,20 @@ class Tower5 extends GameObject
     cash = false;
   }
   
+  
+  
   void Place()
   {
-    i = towers.TowerPlace();
-    towerCheck[i] = true;
+    this.i = towers.TowerPlace();
   }
   
   void Update()
   {
-    if(i != 50)
-    {
-      PVector temp = new PVector(0, 0);
-      temp = towers.TowerUpdate(i);
-      centre.x = temp.x;
-      centre.y = temp.y;
-      cash = true;
-      Render();
-    }
+    PVector temp = new PVector(0, 0);
+    temp = towers.TowerUpdate(i);
+    centre.x = temp.x;
+    centre.y = temp.y;
+    cash = true;
+    Render();
   }
 }

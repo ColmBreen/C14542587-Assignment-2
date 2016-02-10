@@ -38,10 +38,11 @@ class Tower3 extends GameObject
     cash = false;
   }
   
+  
+  
   void Place()
   {
-    i = towers.TowerPlace();
-    towerCheck[i] = true;
+    this.i = towers.TowerPlace();
   }
   
   void Update()

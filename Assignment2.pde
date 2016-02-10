@@ -18,9 +18,10 @@ void setup()
   gold = 100; 
   kills = 0;
   goals = 0;
+  rightClick = 0;
 }
 
-int gold, kills, goals;
+int gold, kills, goals, rightClick;
 boolean towerSelect, menu, setup, setupPop;
 int selectedTower;
 Towers towers;
@@ -252,6 +253,10 @@ void draw()
 
 void mouseClicked()
 {
+  if(mouseButton == RIGHT)
+  {
+    rightClick = 1;
+  }
   if(menu == false)
   {
     if(setup == true)
