@@ -33,7 +33,7 @@ class Enemy3 extends GameObject
     {
       gameObjects.remove(this);
       kills ++;
-      gold += 50;
+      gold += 35;
     }
     if(direction == 0)
     {

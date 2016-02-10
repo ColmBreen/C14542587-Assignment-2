@@ -15,6 +15,8 @@ void setup()
   menu = true;
   setup = false;
   setupPop = false;
+  gameOver = false;
+  winner = false;
   gold = 100; 
   kills = 0;
   goals = 0;
@@ -22,7 +24,7 @@ void setup()
 }
 
 int gold, kills, goals, rightClick;
-boolean towerSelect, menu, setup, setupPop;
+boolean towerSelect, menu, setup, setupPop, gameOver, winner;
 int selectedTower;
 Towers towers;
 Tower1 tower1;
@@ -37,8 +39,28 @@ ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
 
 void draw()
 {
-  if(menu == true)
+  if(gameOver == true)
   {
+    background(0);
+    textSize(50);
+    textAlign(CENTER);
+    fill(255, 0, 0);
+    text("Game Over", 400, 100);
+    textSize(40);
+    text("Would you like to try again?", 400, 150);
+    rectMode(CENTER);
+    fill(255);
+    rect(200, 300, 200, 100);
+    fill(255, 0, 0);
+    text("Retry", 200, 310);
+    fill(255);
+    rect(600, 300, 200, 100);
+    fill(255, 0, 0);
+    text("Menu", 600, 310);
+  }
+   else if(menu == true)
+  {
+    background(0);
     textSize(50);
     textAlign(CENTER);
     fill(255, 0, 0);
@@ -221,40 +243,35 @@ void draw()
     round.roundChange();
     if(goals >= (round.enemies/2))
     {
-       
-     println("game over");
-     kills = 0;
-     goals = 0;
-     round.count = 0;
-     menu = true;
-     //background(0);
-     for(int i = 0; i < gameObjects.size(); i++)
-     {
-       gameObjects.remove(gameObjects.get(i));
-     }
-     for(int i = 0; i < gameObjects.size(); i++)
-     {
-       gameObjects.remove(gameObjects.get(i));
-     }
-     for(int i = 0; i < gameObjects.size(); i++)
-     {
-       gameObjects.remove(gameObjects.get(i));
-     }
-     round.rounds[0] = true;
-     for(int i = 1; i < 5; i ++)
-     {
-       round.rounds[i] = false;
-     } 
+       menu = true;
+       gameOver = true;
+       kills = 0;
+       goals = 0;
+       round.count = 0;
+       //background(0);
+       for(int i = 0; i < gameObjects.size(); i++)
+       {
+         gameObjects.remove(gameObjects.get(i));
+       }
+       for(int i = 0; i < gameObjects.size(); i++)
+       {
+         gameObjects.remove(gameObjects.get(i));
+       }
+       for(int i = 0; i < gameObjects.size(); i++)
+       {
+         gameObjects.remove(gameObjects.get(i));
+       }
+       round.rounds[0] = true;
+       for(int i = 1; i < 5; i ++)
+       {
+         round.rounds[i] = false;
+       } 
     }
   }
 }
 
 void mouseClicked()
 {
-  if(mouseButton == RIGHT)
-  {
-    rightClick = 1;
-  }
   if(menu == false)
   {
     if(setup == true)
@@ -356,7 +373,20 @@ void mouseClicked()
       }
     }
   }
-  else if(mouseX > 200 && mouseX < 600 && mouseY > 250 && mouseY < 350)
+  else if(gameOver == true && mouseX > 100 && mouseX < 300 && mouseY > 250 && mouseY < 350)
+  {
+    menu = false;
+    gameOver = false;
+    setup = true;
+    setupPop = true;
+  }
+  else if(gameOver == true && mouseX > 500 && mouseX < 700 && mouseY > 250 && mouseY < 350)
+  {
+    gameOver = false;
+    setup = true;
+    setupPop = true;
+  }
+  else if(mouseX > 200 && mouseX < 600 && mouseY > 250 && mouseY < 350 && menu == true)
   {
     menu = false;
     setup = true;

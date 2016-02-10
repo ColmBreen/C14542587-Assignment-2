@@ -4,6 +4,7 @@ DT228/2 OOP Assignment 2
 C14542587 Colm Breen
 
 For my second assignment I decided to make a tower defense game. 
+
 When the program is run it first displays a menu. From this menu the user can click to start the game. 
 Once the game has been started the user is in a setup phase. During this phase towers can be placed. 
 For the first round only the first tower is available. This tower costs $50 and does 2 damage per hit to the enemy. 
