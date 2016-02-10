@@ -52,7 +52,7 @@ class Map
       }
     }
     text("Enemies Left:", pos1/2, pos2*2);
-    text(round.enemies - kills, pos1/2, pos2*2.25);
+    text(round.enemies - kills - goals, pos1/2, pos2*2.25);
     line(middlePath-halfLineWidth, 0, middlePath-halfLineWidth, halfLineWidth);
     line(middlePath+halfLineWidth, 0, middlePath+halfLineWidth, halfLineWidth);
     line(middlePath+halfLineWidth, (pos2*5)-(halfLineWidth), middlePath+halfLineWidth, pos2*5);
